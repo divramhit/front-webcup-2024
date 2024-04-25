@@ -20,6 +20,9 @@
     "@serwist/precaching": "^8.4.4",
     "@serwist/sw": "^8.4.4",
     "@tabler/icons-react": "^3.2.0",
+    "@tsparticles/engine": "^3.3.0",
+    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/slim": "^3.3.0",
     "clsx": "^2.1.0",
     "firebase": "^10.9.0",
     "framer-motion": "^11.0.28",
@@ -29,6 +32,7 @@
     "next-auth": "^4.24.7",
     "react": "^18",
     "react-dom": "^18",
+    "simplex-noise": "^4.0.1",
     "tailwind-merge": "^2.2.2"
   },
   "devDependencies": {
