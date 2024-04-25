@@ -1,8 +1,10 @@
 import { Inter } from "next/font/google";
 import '../app/globals.css';
 import { Providers } from "./providers";
-
+import ThemeSelector from "@/components/theme/ThemeSelector";
+import PPNavbar from "@/components/Navbar/PPNavbar";
 const inter = Inter({ subsets: ["latin"] });
+import { SparklesCore } from "@/components/aceternity-ui/Sparkles";
 
 const APP_NAME = "PWA App";
 const APP_DEFAULT_TITLE = "My Awesome PWA App";
@@ -50,10 +52,17 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
     return (
-        <html className="dark">
-            <body>
+        <html>
+            <body>  
                 <div className={`${inter.className} main-app`}>
 					<Providers>
+                        <PPNavbar />
+                        {/* <div className="w-100 h-40 relative">
+                            <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-100 blur-sm" />
+                            <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px " />
+                            <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-[5px]  blur-sm" />
+                            <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px " />
+                        </div> */}
 						{children}
 					</Providers>
 				</div>
