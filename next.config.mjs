@@ -15,7 +15,7 @@ const withSerwist = withSerwistInit({
     // use something else that works, such as "service-worker/index.ts".
     swSrc: "src/utils/sw/sw.js",
     swDest: "public/sw.js",
-	disable: true
+	disable: process.env.NODE_ENV === "development"
 });
 
 export default withSerwist(nextConfig);
