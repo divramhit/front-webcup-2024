@@ -1,13 +1,13 @@
 import { Inter } from "next/font/google";
 import '../app/globals.css';
 import { Providers } from "./providers";
-
+import PPNavbar from "@/components/Navbar/PPNavbar";
 const inter = Inter({ subsets: ["latin"] });
 
-const APP_NAME = "PWA App";
-const APP_DEFAULT_TITLE = "My Awesome PWA App";
-const APP_TITLE_TEMPLATE = "%s - PWA App";
-const APP_DESCRIPTION = "Best PWA app in the world!";
+const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME;
+const APP_DEFAULT_TITLE = APP_NAME;
+const APP_TITLE_TEMPLATE = `%s - ${process.env.NEXT_PUBLIC_APP_TITLE_TEMPLATE}`;
+const APP_DESCRIPTION = process.env.NEXT_PUBLIC_APP_DESCRIPTION;
 
 export const metadata = {
     applicationName: APP_NAME,
@@ -50,10 +50,11 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
     return (
-        <html className="dark">
-            <body>
+        <html>
+            <body>  
                 <div className={`${inter.className} main-app`}>
 					<Providers>
+                        <PPNavbar />
 						{children}
 					</Providers>
 				</div>
