@@ -1,5 +1,5 @@
 import React from "react"
-import { LoginForm } from "@/components/aceternity-ui/LoginForm"
+import { LoginForm } from "@/components/pp-ui/LoginForm"
 
 export const metadata = {
 	title: 'Quack your way in!',

@@ -1,4 +1,4 @@
-export default function Sun({
+export default function PPSun({
     fill = 'currentColor',
     filled,
     size,
