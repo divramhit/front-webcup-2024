@@ -284,6 +284,11 @@ Generally, you don't need to run `npx cap sync` or `npx cap copy` while you're f
 ### [Aceternity UI](https://ui.aceternity.com):
 - Docs: [Click Here](https://ui.aceternity.com/components/)
 
+### Icons Libraries:
+- Bootstrap Icons: [Click Here](https://icons.getbootstrap.com)
+	#### Additional Icon Resources:
+	- Heroicons: [Click Here](https://heroicons.com)
+
 #### Notes for App Router ![Custom Badge](https://img.shields.io/badge/IMPORTANT-red.svg):
 1. For `components`, use the component from the individual package not the from `@nextui-org/react`, some examples below:
 	- `Button`: `import { Button } from '@nextui-org/button'`
