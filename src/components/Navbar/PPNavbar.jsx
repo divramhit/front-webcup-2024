@@ -3,13 +3,10 @@
 import { useState } from "react";
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Link, Button} from "@nextui-org/react";
 import ThemeSelector from "../theme/ThemeSelector";
-import { useSession } from "next-auth/react";
 import { AnimatedTooltip } from "../aceternity-ui/AnimatedTooltip";
 
 export default function PPNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const session = useSession();
-  console.log(session);
 
   const menuItems = [
     "Main",

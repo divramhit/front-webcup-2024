@@ -1,32 +1,11 @@
 'use client'
 
-import React, { useState } from "react";
 import { Input } from "../baseAceternityUi/3dCard/input/input";
 import { Label } from "../baseAceternityUi/3dCard/label/label";
 import { cn } from "@/utils/cn";
-import { signIn } from 'next-auth/react';
-import { useRouter } from "next/navigation";
+import { login } from "@/actions/actions";
 
-export function LoginForm() {
-	const router = useRouter();
-
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
-
-	const handleSubmit = async (e) => {
-		e.preventDefault();
-        const response = await signIn('credentials', {
-            email: email,
-            password: password,
-            redirect: false
-        })
-        
-		if (!response?.error) {
-			router.push('/dashboard');
-			router.refresh();
-		}
-	};
-
+export async function LoginForm() {
 	return (
 		<div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
 			<h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
@@ -36,14 +15,14 @@ export function LoginForm() {
 				Login to Puddle Pirates Hub
 			</p>
 
-			<form className="my-8" onSubmit={handleSubmit}>
+			<form className="my-8" action={login}>
 				<LabelInputContainer className="mb-4">
 					<Label htmlFor="email">Email Address</Label>
-					<Input id="email" placeholder="projectmayhem@fc.com" value={email} onChange={e => setEmail(e.target.value)} type="email" />
+					<Input id="email" name="email" placeholder="projectmayhem@fc.com" type="email" />
 				</LabelInputContainer>
 				<LabelInputContainer className="mb-4">
 					<Label htmlFor="password">Password</Label>
-					<Input id="password" placeholder="••••••••" value={password} onChange={e => setPassword(e.target.value)} type="password" />
+					<Input id="password" name="password" placeholder="••••••••" type="password" />
 				</LabelInputContainer>
 
 				<button

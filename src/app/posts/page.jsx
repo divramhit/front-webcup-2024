@@ -1,12 +1,15 @@
-import { customServerFetch } from "@/lib/api";
 import { CardWithMeteors } from "@/components/aceternity-ui/CardWithMeteors";
 import PostDelete from "@/components/posts/PostDelete";
+import { getSession } from "@/actions/actions";
+
 
 export default async function Posts() {
+    
+    const session = await getSession();
 
     async function getPosts() {
-        const data = await customServerFetch('/posts', "GET");
-        return data ?? [];
+        // const data = await customServerFetch('/posts', "GET");
+        return [];
     }
 
     const posts = await getPosts();
@@ -22,6 +25,7 @@ export default async function Posts() {
                     </>
                 })
             }
+            {JSON.stringify(session)}
         </>
     )
 }

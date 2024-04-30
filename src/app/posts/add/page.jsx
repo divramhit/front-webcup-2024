@@ -1,21 +1,20 @@
-import { customServerFetch } from "@/lib/api";
 import {Input} from "@nextui-org/input";
 import { Button } from "@nextui-org/react";
-import { redirect } from "next/navigation";
 
 export default async function AddPost() {
     async function addPost(formData) {
         'use server'
-        const title = formData.get("title");
-        const content = formData.get("content");
+        // const title = formData.get("title");
+        // const content = formData.get("content");
 
-        const data = {
-            'title' : title,
-            'content' : content,
-        }
+        // const data = {
+        //     'title' : title,
+        //     'content' : content,
+        // }
 
-        const response = await customServerFetch("/posts/create", "POST", data);
-        redirect('/dashboard')
+        // const response = await customServerFetch("/posts/create", "POST", data);
+        // redirect('/dashboard')
+        console.log(formData);
     }
 
     return (
