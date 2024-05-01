@@ -3,7 +3,6 @@
 import { useState } from "react";
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Button} from "@nextui-org/react";
 import ThemeSelector from "../theme/ThemeSelector";
-import { AnimatedTooltip } from "../aceternity-ui/AnimatedTooltip";
 import Link from "next/link";
 
 export default function PPNavbar() {
@@ -26,7 +25,7 @@ export default function PPNavbar() {
   ]
 
   	return (
-		<Navbar onMenuOpenChange={setIsMenuOpen}>
+		<Navbar onMenuOpenChange={setIsMenuOpen} className="group/navbar transition bg-transparent backdrop-blur-none hover:backdrop-blur-lg">
 			<NavbarContent>
 				<NavbarMenuToggle
 				aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -67,24 +66,24 @@ export default function PPNavbar() {
 				<NavbarItem>
 					<ThemeSelector />
 				</NavbarItem>
-				<AnimatedTooltip items={people}/>
 			</NavbarContent>
 			<NavbarMenu>
 				{Object.keys(menuItems).map((item, index) => (
 				<NavbarMenuItem key={`${item}-${index}`}>
 					<Link
-					color={
-						index === 2 ? "primary" : index === menuItems.length - 1 ? "danger" : "foreground"
-					}
-					className="w-full"
-					href={menuItems[item]}
-					size="lg"
+						color={
+							index === 2 ? "primary" : index === menuItems.length - 1 ? "danger" : "foreground"
+						}
+						className="w-full"
+						href={menuItems[item]}
+						size="lg"
 					>
-					{item}
+						{item}
 					</Link>
 				</NavbarMenuItem>
 				))}
 			</NavbarMenu>
+
 		</Navbar>
   );
 }
