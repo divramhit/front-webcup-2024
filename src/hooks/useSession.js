@@ -14,7 +14,7 @@ export default function useSession() {
         } catch (e) {
             console.log(e);
         }
-
+        
     }, []);
 
     return {session, setSession};
