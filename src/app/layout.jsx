@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 import '../app/globals.css';
+import { Providers } from "./providers";
 const inter = Inter({ subsets: ["latin"] });
 
 const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME;
@@ -52,7 +53,9 @@ export default function RootLayout({ children }) {
         <html>
             <body>  
                 <div className={`${inter.className} main-app`}>
-					{children}
+					<Providers>
+						{children}
+					</Providers>
 				</div>
             </body>
         </html>
