@@ -1,17 +1,20 @@
 'use client'
 
 import { useState } from "react";
-import {Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Link, Button} from "@nextui-org/react";
+import {Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Button} from "@nextui-org/react";
 import ThemeSelector from "../theme/ThemeSelector";
 import { AnimatedTooltip } from "../aceternity-ui/AnimatedTooltip";
+import Link from "next/link";
 
 export default function PPNavbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const menuItems = [
-    "Main",
-	"About Us"
-  ];
+	const menuItems = {
+		"Dashboard" : "/dashboard",
+		"About Us" : "about-us",
+		"Login" : "/login",
+		"Signup" : "/sign-up"
+	};
 
   const people = [
 	{
@@ -22,61 +25,61 @@ export default function PPNavbar() {
 	},
   ]
 
-  return (
-    <Navbar onMenuOpenChange={setIsMenuOpen}>
-		<NavbarContent>
-			<NavbarMenuToggle
-			aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-			className="sm:hidden"
-			/>
-			<NavbarBrand>
-			{/* <AcmeLogo /> */}
-			<p className="font-bold text-inherit">ACME</p>
-			</NavbarBrand>
-		</NavbarContent>
+  	return (
+		<Navbar onMenuOpenChange={setIsMenuOpen}>
+			<NavbarContent>
+				<NavbarMenuToggle
+				aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+				className="sm:hidden"
+				/>
+				<NavbarBrand>
+				{/* <AcmeLogo /> */}
+				<p className="font-bold text-inherit">ACME</p>
+				</NavbarBrand>
+			</NavbarContent>
 
-		<NavbarContent className="hidden sm:flex gap-4" justify="center">
-			<NavbarItem isActive>
-				<Link color="foreground" href="/dashboard">
-					Dashboard
-				</Link>
-			</NavbarItem>
-			<NavbarItem>
-				<Link href="#" aria-current="page">
-					About us
-				</Link>
-			</NavbarItem>
-		</NavbarContent>
-		<NavbarContent justify="end">
-			<NavbarItem className="hidden lg:flex">
-			<Link href="/login">Login</Link>
-			</NavbarItem>
-			<NavbarItem>
-			<Button as={Link} color="primary" href="/sign-up" variant="flat">
-				Sign Up
-			</Button>
-			</NavbarItem>
-			<NavbarItem>
-				<ThemeSelector />
-			</NavbarItem>
-			<AnimatedTooltip items={people}/>
-		</NavbarContent>
-		<NavbarMenu>
-			{menuItems.map((item, index) => (
-			<NavbarMenuItem key={`${item}-${index}`}>
-				<Link
-				color={
-					index === 2 ? "primary" : index === menuItems.length - 1 ? "danger" : "foreground"
-				}
-				className="w-full"
-				href="#"
-				size="lg"
-				>
-				{item}
-				</Link>
-			</NavbarMenuItem>
-			))}
-		</NavbarMenu>
-    </Navbar>
+			<NavbarContent className="hidden sm:flex gap-4" justify="center">
+				<NavbarItem isActive>
+					<Link color="foreground" href="/dashboard">
+						Dashboard
+					</Link>
+				</NavbarItem>
+				<NavbarItem>
+					<Link href="#" aria-current="page">
+						About us
+					</Link>
+				</NavbarItem>
+			</NavbarContent>
+			<NavbarContent justify="end">
+				<NavbarItem className="hidden lg:flex">
+				<Link href="/login">Login</Link>
+				</NavbarItem>
+				<NavbarItem>
+				<Button as={Link} color="primary" href="/sign-up" variant="flat">
+					Sign Up
+				</Button>
+				</NavbarItem>
+				<NavbarItem>
+					<ThemeSelector />
+				</NavbarItem>
+				<AnimatedTooltip items={people}/>
+			</NavbarContent>
+			<NavbarMenu>
+				{Object.keys(menuItems).map((item, index) => (
+				<NavbarMenuItem key={`${item}-${index}`}>
+					<Link
+					color={
+						index === 2 ? "primary" : index === menuItems.length - 1 ? "danger" : "foreground"
+					}
+					className="w-full"
+					href={menuItems[item]}
+					size="lg"
+					>
+					{item}
+					</Link>
+				</NavbarMenuItem>
+				))}
+			</NavbarMenu>
+		</Navbar>
   );
 }

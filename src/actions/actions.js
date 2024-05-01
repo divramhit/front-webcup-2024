@@ -16,19 +16,39 @@ export const getSession = async () => {
 
 export const login = async (formData) => {
     const session = await getSession();
-    const defaultEmail = "nihil@nihil.com";
-    const defaultPassword = "nihilisr00t";
-
-    console.log(formData);
 
     const email = formData.get("email");
     const password = formData.get("password");
 
+    const payload = {
+        email: email,
+        password: password,
+    }
+    const url = process.env.NEXT_PUBLIC_BACKEND_URL + '/auth';
+    const loginResponse = await fetch(url, {
+        method : "POST",
+        headers : {
+            "Content-Type" : "application/json"
+        },
+        body: JSON.stringify(payload)
+    })
+
+    if (loginResponse.status == 401) {
+        return await loginResponse.json();
+    }
+
+    const user = await loginResponse.json();
+
     session.authenticated = true;
-    session.email = email;
+    session.user = user;
 
     await session.save();
 
     redirect("/posts")
 }
-export const logout = async () => {}
+
+export const logout = async () => {
+    const session = await getSession();
+    session.destroy();
+    redirect("/login");
+}
