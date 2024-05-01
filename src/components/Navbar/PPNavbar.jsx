@@ -39,9 +39,14 @@ export default function PPNavbar() {
 			</NavbarContent>
 
 			<NavbarContent className="hidden sm:flex gap-4" justify="center">
-				<NavbarItem isActive>
+				<NavbarItem>
 					<Link color="foreground" href="/dashboard">
 						Dashboard
+					</Link>
+				</NavbarItem>
+				<NavbarItem>
+					<Link color="foreground" href="/posts">
+						Posts
 					</Link>
 				</NavbarItem>
 				<NavbarItem>
