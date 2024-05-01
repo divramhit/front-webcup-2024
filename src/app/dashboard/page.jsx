@@ -8,7 +8,7 @@ import { ImagesSliderDemo } from "@/components/aceternity-ui/ImagesSliderDemo";
 const Dashboard = () => {
     return (
 		<div className="w-100 overflow-hidden">
-			{/* <ImagesSliderDemo/> */}
+			<ImagesSliderDemo/>
 		</div>
     )
 }
