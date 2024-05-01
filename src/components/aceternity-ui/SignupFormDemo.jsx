@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import { Input } from "../baseAceternityUi/3dCard/input/input";
-import { Label } from "../baseAceternityUi/3dCard/label/label";
+import { Input } from "../baseAceternityUi/input/input";
+import { Label } from "../baseAceternityUi/label/label";
 import { cn } from "@/utils/cn";
 import {
 	IconBrandGithub,
