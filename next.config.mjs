@@ -4,12 +4,16 @@ const nextConfig = {
 	images: {
 		remotePatterns: [
 			{
-			  protocol: 'https',
-			  hostname: 'images.unsplash.com'
+				protocol: 'https',
+				hostname: 'images.unsplash.com'
 			},
 			{
 			  protocol: 'http',
-			  hostname: 'localhost'
+			  hostname: 'localhost',
+			},
+			{
+				protocol: 'https',
+			  	hostname: 'i.pravatar.cc'
 			}
 		],
 	},
@@ -20,7 +24,7 @@ const withSerwist = withSerwistInit({
     // use something else that works, such as "service-worker/index.ts".
     swSrc: "src/utils/sw/sw.js",
     swDest: "public/sw.js",
-	disable: process.env.NODE_ENV === "development"
+	disable: true
 });
 
 export default withSerwist(nextConfig);

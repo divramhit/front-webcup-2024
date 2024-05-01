@@ -1,10 +1,11 @@
 import PPNavbar from "@/components/Navbar/PPNavbar";
+import { getSession } from "@/actions/actions";
 
-export default function RootLayout({ children }) {
-
+export default async function MainLayout({ children }) {
+	const session = await getSession();
     return (
 		<div className={`main-app-wrapper`}>
-			<PPNavbar />
+			<PPNavbar session={session}/>
 			{children}
 		</div>
     );

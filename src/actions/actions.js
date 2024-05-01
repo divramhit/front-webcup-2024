@@ -2,6 +2,7 @@
 
 import { sessionOptions } from "@/lib/auth"
 import { getIronSession } from "iron-session"
+import { jwtDecode } from "jwt-decode"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
 
@@ -24,6 +25,7 @@ export const login = async (formData) => {
         email: email,
         password: password,
     }
+
     const url = process.env.NEXT_PUBLIC_BACKEND_URL + '/auth';
     const loginResponse = await fetch(url, {
         method : "POST",
@@ -38,13 +40,17 @@ export const login = async (formData) => {
     }
 
     const user = await loginResponse.json();
+    const token = user?.token;
+    const data = jwtDecode(token);
+    console.log(data);
+    data.token = token;
 
     session.authenticated = true;
-    session.user = user;
+    session.user = data;
 
     await session.save();
 
-    redirect("/posts")
+    redirect("/dashboard")
 }
 
 export const logout = async () => {
