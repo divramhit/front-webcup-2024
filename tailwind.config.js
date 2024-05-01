@@ -11,6 +11,18 @@ module.exports = {
 	],
 	theme: {
 		extend: {
+			colors: {
+				"pp-primary": "#4060a2",
+				"pp-secondary": "#4060a2",
+				"pp-accent-1": "#4060a2",
+				"pp-accent-2": "#4060a2",
+				"pp-accent-3": "#4060a2",
+				"pp-primary-dark": "#4060a2",
+				"pp-secondary-dark": "#4060a2",
+				"pp-accent-dark-1": "#4060a2",
+				"pp-accent-dark-2": "#4060a2",
+				"pp-accent-dark-3": "#4060a2"
+			},
 			backgroundImage: {
 				"gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
 				"gradient-conic":
