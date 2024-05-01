@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import '../app/globals.css';
 import { Providers } from "./providers";
 import PPNavbar from "@/components/Navbar/PPNavbar";
+import { redirect } from "next/navigation";
 const inter = Inter({ subsets: ["latin"] });
 
 const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME;
@@ -49,6 +50,12 @@ export const viewport = {
 };
 
 export default function RootLayout({ children }) {
+	const isMaintenanceMode = true;
+
+	// if (isMaintenanceMode) {
+	// 	redirect('/maintenance')
+	// }
+
     return (
         <html>
             <body>  
