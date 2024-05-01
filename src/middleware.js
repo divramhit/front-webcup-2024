@@ -6,6 +6,9 @@ const protectedRoutes = ['/posts']
 const publicRoutes = ['/login', '/signup', '/']
  
 export default async function middleware(req) {
+    if (process.env.NODE_ENV === "production") {
+        return NextResponse.redirect(new URL('/app/maintenance', req.nextUrl));
+    };
     // 2. Check if the current route is protected or public
     const path = req.nextUrl.pathname
     const isProtectedRoute = protectedRoutes.includes(path)
