@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import '../app/globals.css';
 import { Providers } from "./providers";
 import PPNavbar from "@/components/Navbar/PPNavbar";
+import { getSession } from "@/actions/actions";
 const inter = Inter({ subsets: ["latin"] });
 
 const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME;
@@ -48,13 +49,15 @@ export const viewport = {
   themeColor: "#FFFFFF",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+    const session = await getSession();
+
     return (
         <html>
             <body>  
                 <div className={`${inter.className} main-app`}>
 					<Providers>
-                        <PPNavbar />
+                        <PPNavbar session={session}/>
 						{children}
 					</Providers>
 				</div>
