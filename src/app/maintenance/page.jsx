@@ -13,14 +13,14 @@ const MaintenancePage = () => {
 						<Meteors/>
 					</div>
 					<div className="logo-wrapper w-20 rounded-lg overflow-hidden aspect-square relative">
-						<Image fill src={`${process.env.NEXT_PUBLIC_APP_URL}${process.env.NEXT_PUBLIC_BASE_PATH}/images/logo.png`} />
+						<Image fill src={`${process.env.NEXT_PUBLIC_APP_URL}/images/logo.png`} alt="puddle pirates logo"/>
 					</div>
 					<h1 className='text-xl lg:text-5xl font-bold'>Website Coming Soon...</h1>
 					<span className='w-5/6 text-sm lg:text-xl text-center'>Our ducks are busy lining up in a row to bring you a splash of innovation. Stay tuned as we paddle towards launch!</span>
 					<span className='text-2xl lg:text-4xl font-bold'><Countdown /></span>
 				</div>
 				<div className='w-full lg:w-1/2 h-full flex justify-center items-center rounded-3xl overflow-hidden'>
-					<video autoPlay className='h-full object-cover object-[40%_center]' loop muted src={`${process.env.NEXT_PUBLIC_APP_URL}${process.env.NEXT_PUBLIC_BASE_PATH}/videos/maintenance.mp4`}/>
+					<video autoPlay className='h-full object-cover object-[40%_center]' loop muted src={`${process.env.NEXT_PUBLIC_APP_URL}/videos/maintenance.mp4`}/>
 				</div>
 			</div>
 
