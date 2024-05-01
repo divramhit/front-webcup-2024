@@ -4,11 +4,12 @@ import Logout from "@/components/Logout";
 import Link from "next/link";
 import { BackgroundGradientAnimation } from "@/components/aceternity-ui/BackgroundGradientAnimation";
 import { ImagesSliderDemo } from "@/components/aceternity-ui/ImagesSliderDemo";
+import { TracingBeamDemo } from "@/components/aceternity-ui/TracingBeamDemo";
 
 const Dashboard = () => {
     return (
 		<div className="w-100 overflow-hidden">
-			<ImagesSliderDemo/>
+			<TracingBeamDemo/>
 		</div>
     )
 }
