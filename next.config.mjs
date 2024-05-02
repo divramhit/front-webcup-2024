@@ -18,6 +18,10 @@ const nextConfig = {
 			{
 				protocol: 'https',
 			  	hostname: 'puddlepirates.maurice.webcup.hodi.host'
+			},
+			{
+				protocol: 'https',
+			  	hostname: 'puddlepirates.latchoomun.com'
 			}
 		],
 	},
