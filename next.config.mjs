@@ -18,10 +18,13 @@ const nextConfig = {
 			{
 				protocol: 'https',
 			  	hostname: 'puddlepirates.maurice.webcup.hodi.host'
+			},
+			{
+				protocol: 'https',
+			  	hostname: 'puddlepirates.latchoomun.com'
 			}
 		],
 	},
-	basePath: "/app"
 };
 const withSerwist = withSerwistInit({
     // Note: This is only an example. If you use Pages Router,
