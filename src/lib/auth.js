@@ -8,7 +8,7 @@ export const sessionOptions = {
 }
 
 export const getClientSession = async () => {
-    const sessionResponse = await fetch('/app/api/auth/session', {
+    const sessionResponse = await fetch('/api/auth/session', {
         method: "GET"
     }).catch(e => console.error(e));
 

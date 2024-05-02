@@ -21,7 +21,6 @@ const nextConfig = {
 			}
 		],
 	},
-	basePath: "/app"
 };
 const withSerwist = withSerwistInit({
     // Note: This is only an example. If you use Pages Router,
