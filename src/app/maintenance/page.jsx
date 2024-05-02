@@ -1,6 +1,5 @@
 import React from 'react';
 import Countdown from './countdown';
-import Image from 'next/image';
 import { Meteors } from '@/components/aceternity-ui/Meteors';
 import {Card, CardHeader, CardBody, CardFooter} from "@nextui-org/card";
 
@@ -12,8 +11,8 @@ const MaintenancePage = () => {
 					<div className="meteors-wrapper absolute top-0 h-full w-full overflow-hidden">
 						<Meteors/>
 					</div>
-					<div className="logo-wrapper w-20 rounded-lg overflow-hidden aspect-square relative">
-						<Image fill src={`${process.env.NEXT_PUBLIC_APP_URL}/images/logo.png`} alt="puddle pirates logo"/>
+					<div className="logo-wrapper w-28 overflow-hidden aspect-square relative">
+						<img className='w-full object-contain rounded-lg' loading='lazy' src={`${process.env.NEXT_PUBLIC_APP_URL}/images/logo.png`} alt="puddle pirates logo"/>
 					</div>
 					<h1 className='text-xl lg:text-5xl font-bold'>Website Coming Soon...</h1>
 					<span className='w-5/6 text-sm lg:text-xl text-center'>Our ducks are busy lining up in a row to bring you a splash of innovation. Stay tuned as we paddle towards launch!</span>
@@ -33,7 +32,7 @@ const MaintenancePage = () => {
 						radius="lg"
 						className="border-none"
 					>
-						<Image
+						<img
 							alt="Woman listing to music"
 							className="object-cover"
 							height={200}

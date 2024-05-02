@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import Image from "next/image";
 import { twMerge } from "tailwind-merge";
 import { TracingBeam } from "../baseAceternityUi/tracingBeam/tracing-beam";
 
@@ -20,7 +19,7 @@ export function TracingBeamDemo() {
 
 						<div className="text-sm  prose prose-sm dark:prose-invert">
 							{item?.image && (
-								<Image
+								<img
 									src={item.image}
 									alt="blog thumbnail"
 									height="1000"
