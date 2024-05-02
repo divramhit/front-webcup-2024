@@ -49,7 +49,7 @@ export default function PPNavbar({session}) {
 					</Link>
 				</NavbarItem>
 				<NavbarItem>
-					<Link href="#" aria-current="page">
+					<Link href="/about-us" aria-current="page">
 						About us
 					</Link>
 				</NavbarItem>
