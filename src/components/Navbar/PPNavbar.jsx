@@ -10,6 +10,7 @@ import {
 	NavbarMenu, 
 	NavbarMenuItem, 
 	Button,
+	Tooltip,
 	Dropdown,
 	DropdownMenu,
 	DropdownTrigger,
@@ -19,6 +20,7 @@ import {
 } from "@nextui-org/react";
 import ThemeSelector from "../theme/ThemeSelector";
 import PPModal from "../PPModal/PPModal";
+import { LoginForm } from "../pp-ui/LoginForm";
 import { logout } from "@/actions/actions";
 
 export default function PPNavbar({session}) {
@@ -101,8 +103,16 @@ export default function PPNavbar({session}) {
 					// 		</Button>
 					// 	</NavbarItem>
 					// </>
-					<PPModal>
-						LOGIN AND SIGNUP
+					<PPModal
+						customTrigger={
+							<Tooltip content="or Sign Up" closeDelay={20} offset={-7}>
+								<Button radius="full" className="bg-gradient-to-r from-violet-600 to-indigo-600 text-white shadow-lg font-bold">
+									LOGIN
+								</Button>
+							</Tooltip>
+						}
+					>
+						<LoginForm/>
 					</PPModal>
 				}
 				<NavbarItem>

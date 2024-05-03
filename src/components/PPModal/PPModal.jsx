@@ -4,6 +4,7 @@ import {
 	ModalContent, 
 } from "@nextui-org/modal";
 import {Button} from "@nextui-org/button";
+import { cloneWithButtonPress } from './helper';
 import { useDisclosure } from '@nextui-org/react';
 
 const PPModal = ({ children, customTrigger, defaultButtonContent = "Quack Open" }) => {
@@ -13,7 +14,7 @@ const PPModal = ({ children, customTrigger, defaultButtonContent = "Quack Open" 
 		<>
 			{ 
 				customTrigger ? (
-					React.cloneElement(customTrigger, { onPress: onOpen })
+					cloneWithButtonPress(customTrigger, onOpen)
 				) : (
 					<Button onPress={onOpen}>{defaultButtonContent}</Button>
 				)
