@@ -18,7 +18,6 @@ export const signUp = async (formData) => {
 
 
     const response = await signUpPromise.json();
-    console.log(response);
 
-    // redirect('/login');
+    redirect('/login');
 }
