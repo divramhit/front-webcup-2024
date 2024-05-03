@@ -14,7 +14,7 @@ const MaintenancePage = async () => {
 	const MemberListData = [
 		{
 			name: "Akass",
-			role: "CAPTAIN QUACK/NAVIGATOR",  // Changed from PROJECT MANAGER/TESTER
+			role: "QUACK QUALITY AND TALES MANAGER",  // Changed from PROJECT MANAGER/TESTER
 			img: getMediaOriginalUrl(teamMedias, "akass-duck")
 		},
 		{
