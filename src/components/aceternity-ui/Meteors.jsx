@@ -17,8 +17,8 @@ export const Meteors = ({
             className
           )}
           style={{
-            top: 5 + Math.floor(Math.random() * 60) + "%",
-            left: 5 + Math.floor(Math.random() * 40) + "%",
+            top: (Math.floor(Math.random() * 60) - 30) + "%",
+			left: (Math.floor(Math.random() * 71) - 20) + "%",
             animationDelay: Math.random() * (0.8 - 0.2) + 0.2 + "s",
             animationDuration: Math.floor(Math.random() * (10 - 2) + 2) + "s",
           }}
