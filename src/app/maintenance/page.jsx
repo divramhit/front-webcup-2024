@@ -8,9 +8,9 @@ const MaintenancePage = async () => {
 
 	const allMedias = await Promise.all([
 		customServerFetchWithoutAuth('api/medias/by_filename/akass-duck-6633fa247c91e755937751.jpg', 'GET'),
+		customServerFetchWithoutAuth('api/medias/by_filename/vee-duck-6633fa2481606651886378.jpg', 'GET'),
 		customServerFetchWithoutAuth('api/medias/by_filename/priyesh-duck-6633fa247f1ad637165946.jpg', 'GET'),
-		customServerFetchWithoutAuth('api/medias/by_filename/ramhit-duck-6633fa2480535309587314.jpg', 'GET'),
-		customServerFetchWithoutAuth('api/medias/by_filename/vee-duck-6633fa2481606651886378.jpg', 'GET')
+		customServerFetchWithoutAuth('api/medias/by_filename/ramhit-duck-6633fa2480535309587314.jpg', 'GET')		
 	]).then(async (responses) => {
 		// Assuming responses are already parsed as JSON in the customServerFetchWithoutAuth function
 		return [
@@ -29,17 +29,18 @@ const MaintenancePage = async () => {
 			role: "CAPTAIN QUACK/NAVIGATOR"  // Changed from PROJECT MANAGER/TESTER
 		},
 		{
+			name: "Vee",
+			role: "CAPTAIN QUACK/NAVIGATOR"  // Changed from PROJECT MANAGER/TESTER
+		},
+		{
 			name: "Nihil",
 			role: "QUACK-END/SHIP'S ENGINEER"  // Changed from BQUACK-END/DEVOPS
 		},
 		{
 			name: "Ramhit",
 			role: "FEATHERY FULL-QUACK"  // Changed from FULL-QUACK
-		},
-		{
-			name: "Vee",
-			role: "CAPTAIN QUACK/NAVIGATOR"  // Changed from PROJECT MANAGER/TESTER
-		},
+		}
+
 	]
 
 	return (
