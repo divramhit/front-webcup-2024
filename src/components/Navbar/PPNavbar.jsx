@@ -108,18 +108,6 @@ export default function PPNavbar({session}) {
 				</NavbarItem>
 				{
 					session?.authenticated ? <></> :
-					// <>
-					// 	<NavbarItem>
-					// 		<Button as={Link} color="primary" href="/login" variant="flat">
-					// 			Login
-					// 		</Button>
-					// 	</NavbarItem>
-					// 	<NavbarItem>
-					// 		<Button as={Link} color="primary" href="/sign-up" variant="flat">
-					// 			Sign Up
-					// 		</Button>
-					// 	</NavbarItem>
-					// </>
 					<PPModal
 						customTrigger={
 							<Tooltip content="or Sign Up" closeDelay={20} offset={-7}>
@@ -129,7 +117,6 @@ export default function PPNavbar({session}) {
 							</Tooltip>
 						}
 					>
-						{/* <LoginForm/> */}
 						<ModalBody>
 							<Tabs color="secondary" aria-label="Login Tabs" radius="full">
 								{ 
