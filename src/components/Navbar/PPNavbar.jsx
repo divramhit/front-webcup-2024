@@ -16,10 +16,14 @@ import {
 	DropdownTrigger,
 	DropdownItem,
 	Avatar,
-	Link
+	ModalBody,
+	Link,
+	Tabs,
+	Tab
 } from "@nextui-org/react";
 import ThemeSelector from "../theme/ThemeSelector";
 import PPModal from "../PPModal/PPModal";
+import { SignupFormDemo } from "../aceternity-ui/SignupFormDemo";
 import { LoginForm } from "../pp-ui/LoginForm";
 import { logout } from "@/actions/actions";
 
@@ -67,6 +71,19 @@ export default function PPNavbar({session}) {
 		}
 	];
 
+	const LoginModalTabs = [
+		{
+			title: "Login",
+			key: "login",
+			content: (<LoginForm/>)
+		},
+		{
+			title: "Sign Up",
+			key: "signup",
+			content: (<SignupFormDemo />)
+		},
+	]
+
   	return (
 		<Navbar onMenuOpenChange={setIsMenuOpen} className={`group/navbar transition bg-transparent backdrop-blur-none ${ hasScrolled ? 'backdrop-blur-xl' : '' } hover:backdrop-blur-xl`}>
 			<NavbarContent justify="end">
@@ -112,7 +129,18 @@ export default function PPNavbar({session}) {
 							</Tooltip>
 						}
 					>
-						<LoginForm/>
+						{/* <LoginForm/> */}
+						<ModalBody>
+							<Tabs color="secondary" aria-label="Login Tabs" radius="full">
+								{ 
+									LoginModalTabs && LoginModalTabs?.map((tabItem, index) => (
+										<Tab key={tabItem?.key} title={tabItem?.title}>
+											{ tabItem?.content }
+										</Tab>
+									))
+								}
+							</Tabs>
+						</ModalBody>
 					</PPModal>
 				}
 				<NavbarItem>
