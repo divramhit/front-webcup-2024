@@ -62,6 +62,7 @@ const MaintenancePage = async () => {
 						<Card
 							isFooterBlurred
 							className="group/code-quakers-card rounded-full w-80"
+							key={index}
 						>
 							<img
 								alt="Woman listing to music"
