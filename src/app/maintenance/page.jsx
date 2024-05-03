@@ -1,9 +1,47 @@
 import React from 'react';
 import Countdown from './countdown';
 import { Meteors } from '@/components/aceternity-ui/Meteors';
+import { customServerFetchWithoutAuth } from '@/lib/api';
 import {Card, CardHeader, CardBody, CardFooter} from "@nextui-org/card";
 
-const MaintenancePage = () => {
+const MaintenancePage = async () => {
+
+	const allMedias = await Promise.all([
+		customServerFetchWithoutAuth('api/medias/by_filename/akass-duck-6633fa247c91e755937751.jpg', 'GET'),
+		customServerFetchWithoutAuth('api/medias/by_filename/priyesh-duck-6633fa247f1ad637165946.jpg', 'GET'),
+		customServerFetchWithoutAuth('api/medias/by_filename/ramhit-duck-6633fa2480535309587314.jpg', 'GET'),
+		customServerFetchWithoutAuth('api/medias/by_filename/vee-duck-6633fa2481606651886378.jpg', 'GET')
+	]).then(async (responses) => {
+		// Assuming responses are already parsed as JSON in the customServerFetchWithoutAuth function
+		return [
+			await responses[0].json(),
+			await responses[1].json(),
+			await responses[2].json(),
+			await responses[3].json(),
+		]
+	}).catch(error => {
+		console.error("Error fetching data:", error);
+	});
+
+	const MemberListData = [
+		{
+			name: "Akass",
+			role: "CAPTAIN QUACK/NAVIGATOR"  // Changed from PROJECT MANAGER/TESTER
+		},
+		{
+			name: "Nihil",
+			role: "QUACK-END/SHIP'S ENGINEER"  // Changed from BQUACK-END/DEVOPS
+		},
+		{
+			name: "Ramhit",
+			role: "FEATHERY FULL-QUACK"  // Changed from FULL-QUACK
+		},
+		{
+			name: "Vee",
+			role: "CAPTAIN QUACK/NAVIGATOR"  // Changed from PROJECT MANAGER/TESTER
+		},
+	]
+
 	return (
 		<div className="maintenance-page w-screen min-h-screen dark:bg-black">
 			<div className="h-screen w-full flex flex-col p-8 lg:p-16 lg:flex-row gap-y-10 lg:gap-x-28 lg:gap-y-0">
@@ -11,7 +49,7 @@ const MaintenancePage = () => {
 					<div className="meteors-wrapper absolute top-0 h-full w-full overflow-hidden">
 						<Meteors/>
 					</div>
-					<div className="logo-wrapper w-28 overflow-hidden aspect-square relative">
+					<div className="logo-wrapper animate-bounce w-28 overflow-hidden aspect-square relative">
 						<img className='w-full object-contain rounded-lg' loading='lazy' src={`${process.env.NEXT_PUBLIC_APP_URL}/images/logo.png`} alt="puddle pirates logo"/>
 					</div>
 					<h1 className='text-xl lg:text-5xl font-bold'>Website Coming Soon...</h1>
@@ -24,27 +62,28 @@ const MaintenancePage = () => {
 			</div>
 
 			{/* TODO -- MEET OUR CODE QUACKERS */}
-			{/* <div className="h-screen w-full flex gap-x-28 p-16 flex-col">
-				<span className='font-bold text-xl w-full text-center'>MEET OUR CODE QUACKERS</span>
-				<div className="code-quackers-list flex flex-col">
-					<Card
-						isFooterBlurred
-						radius="lg"
-						className="border-none"
-					>
-						<img
-							alt="Woman listing to music"
-							className="object-cover"
-							height={200}
-							src="/images/hero-card.jpeg"
-							width={200}
-						/>
-						<CardFooter className="justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
-							<p className="text-tiny text-black/80">Available soon.</p>
-						</CardFooter>
-					</Card>
+			<div className="min-h-screen w-full flex gap-x-28 p-16 items-center flex-col">
+				<span className='font-bold text-3xl w-full text-center'>MEET OUR CODE QUACKERS</span>
+				<div className="code-quackers-list grid grid-cols-1 lg:grid-cols-2 w-1/2 gap-y-10 justify-around justify-items-center mt-10">
+					{ allMedias && allMedias?.map((media, index) => (
+						<Card
+							isFooterBlurred
+							className="group/code-quakers-card rounded-full w-80"
+						>
+							<img
+								alt="Woman listing to music"
+								className="object-cover"
+								src={media?.media_original}
+							/>
+							<CardFooter className="flex-col ease-in-out justify-center transition-all bg-gradient-to-r from-cyan-500/55 to-blue-500/55 h-full w-full overflow-hidden py-1 absolute -bottom-full group-hover/code-quakers-card:bottom-0 group-focus/code-quakers-card:bottom-0 z-10">
+								<p className="text-center text-slate-100 text-3xl font-extrabold w-full text-black/80">{MemberListData[index].name}</p>
+								<p className="text-center text-slate-100 text-md font-extrabold w-full text-black/80">{MemberListData[index].role}</p>
+							</CardFooter>
+						</Card>
+					)) }
+
 				</div>
-			</div> */}
+			</div>
 		</div>
 	)
 }
