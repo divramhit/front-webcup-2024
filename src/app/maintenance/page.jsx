@@ -7,7 +7,7 @@ import { getMediaOriginalUrl } from '@/utils/helpers/mediaHelper';
 
 const MaintenancePage = async () => {
 
-	const teamImagesFolderResponse = await customServerFetchWithoutAuth('api/folders/by_name/TEAM_IMAGES', 'GET');
+	const teamImagesFolderResponse = await customServerFetchWithoutAuth('/api/folders/by_name/TEAM_IMAGES', 'GET');
 	const teamImagesFolder = await teamImagesFolderResponse.json();
 	const teamMedias = teamImagesFolder?.medias ?? []
 
