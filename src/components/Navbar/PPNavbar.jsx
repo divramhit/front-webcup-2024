@@ -130,10 +130,11 @@ export default function PPNavbar({session}) {
 						</ModalBody>
 					</PPModal>
 				}
-				<NavbarItem>
-					<ThemeSelector />
-				</NavbarItem>
 			</NavbarContent>
+			
+			<NavbarItem>
+				<ThemeSelector />
+			</NavbarItem>
 			
 			<NavbarContent className="hidden lg:contents" as="div" justify="end">
 				{

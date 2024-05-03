@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { Switch } from "@nextui-org/switch";
+import {Button } from "@nextui-org/button";
 import { IconSun, IconMoon } from "@tabler/icons-react";
 
 export default function ThemeSelector() {
@@ -19,6 +20,16 @@ export default function ThemeSelector() {
 		}
     }
 
+	const handleOnClick = () => {
+		if (theme === 'dark') {
+			document.documentElement.classList.remove("dark");
+			setTheme('light')
+		} else {
+			document.documentElement.classList.add("dark");
+			setTheme('dark')
+		}
+	}
+
     return (
 		<>
 			<Switch
@@ -30,6 +41,11 @@ export default function ThemeSelector() {
 				endContent={<IconMoon />}
 				onChange={handleThemeChange}
 			/>
+			<Button isIconOnly onClick={handleOnClick} className="md:hidden" aria-label="Like">
+				{
+					theme == 'dark' ? <IconMoon /> : <IconSun />
+				}
+			</Button>
 		</>
     )
 }
