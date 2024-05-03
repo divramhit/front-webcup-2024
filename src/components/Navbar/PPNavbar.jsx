@@ -116,16 +116,6 @@ export default function PPNavbar({session}) {
 						</NavbarItem>
 					))
 				}
-				{/* <NavbarItem>
-					<Link color="foreground" href="/posts">
-						Posts
-					</Link>
-				</NavbarItem>
-				<NavbarItem>
-					<Link href="/about-us" aria-current="page">
-						About us
-					</Link>
-				</NavbarItem> */}
 				{
 					session?.authenticated ? <></> :
 					<PPModal
