@@ -20,13 +20,16 @@ export default function ThemeSelector() {
     }
 
     return (
-		<Switch
-			defaultSelected
-			size="lg"
-			color="warning"
-			startContent={<IconSun />}
-			endContent={<IconMoon />}
-			onChange={handleThemeChange}
-		/>
+		<>
+			<Switch
+				defaultSelected
+				size="lg"
+				color="warning"
+				className="hidden md:contents"
+				startContent={<IconSun />}
+				endContent={<IconMoon />}
+				onChange={handleThemeChange}
+			/>
+		</>
     )
 }
