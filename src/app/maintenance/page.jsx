@@ -3,42 +3,34 @@ import Countdown from './countdown';
 import { Meteors } from '@/components/aceternity-ui/Meteors';
 import { customServerFetchWithoutAuth } from '@/lib/api';
 import {Card, CardHeader, CardBody, CardFooter} from "@nextui-org/card";
+import { getMediaOriginalUrl } from '@/utils/helpers/mediaHelper';
 
 const MaintenancePage = async () => {
 
-	const allMedias = await Promise.all([
-		customServerFetchWithoutAuth('api/medias/by_filename/akass-duck-6633fa247c91e755937751.jpg', 'GET'),
-		customServerFetchWithoutAuth('api/medias/by_filename/vee-duck-6633fa2481606651886378.jpg', 'GET'),
-		customServerFetchWithoutAuth('api/medias/by_filename/priyesh-duck-6633fa247f1ad637165946.jpg', 'GET'),
-		customServerFetchWithoutAuth('api/medias/by_filename/ramhit-duck-6633fa2480535309587314.jpg', 'GET')		
-	]).then(async (responses) => {
-		// Assuming responses are already parsed as JSON in the customServerFetchWithoutAuth function
-		return [
-			await responses[0].json(),
-			await responses[1].json(),
-			await responses[2].json(),
-			await responses[3].json(),
-		]
-	}).catch(error => {
-		console.error("Error fetching data:", error);
-	});
+	const teamImagesFolderResponse = await customServerFetchWithoutAuth('api/folders/by_name/TEAM_IMAGES', 'GET');
+	const teamImagesFolder = await teamImagesFolderResponse.json();
+	const teamMedias = teamImagesFolder?.medias ?? []
 
 	const MemberListData = [
 		{
 			name: "Akass",
-			role: "CAPTAIN QUACK/NAVIGATOR"  // Changed from PROJECT MANAGER/TESTER
+			role: "CAPTAIN QUACK/NAVIGATOR",  // Changed from PROJECT MANAGER/TESTER
+			img: getMediaOriginalUrl(teamMedias, "akass-duck")
 		},
 		{
 			name: "Vee",
-			role: "CAPTAIN QUACK/NAVIGATOR"  // Changed from PROJECT MANAGER/TESTER
+			role: "CAPTAIN QUACK/NAVIGATOR",  // Changed from PROJECT MANAGER/TESTER
+			img: getMediaOriginalUrl(teamMedias, "vee-duck")
 		},
 		{
 			name: "Nihil",
-			role: "QUACK-END/SHIP'S ENGINEER"  // Changed from BQUACK-END/DEVOPS
+			role: "QUACK-END/SHIP'S ENGINEER",  // Changed from BQUACK-END/DEVOPS
+			img: getMediaOriginalUrl(teamMedias, "priyesh-duck")
 		},
 		{
 			name: "Ramhit",
-			role: "FEATHERY FULL-QUACK"  // Changed from FULL-QUACK
+			role: "FEATHERY FULL-QUACK", // Changed from FULL-QUACK
+			img: getMediaOriginalUrl(teamMedias, "ramhit-duck")
 		}
 
 	]
@@ -66,7 +58,7 @@ const MaintenancePage = async () => {
 			<div className="min-h-screen w-full flex gap-x-28 p-16 items-center flex-col">
 				<span className='font-bold text-3xl w-full text-center'>MEET OUR CODE QUACKERS</span>
 				<div className="code-quackers-list grid grid-cols-1 lg:grid-cols-2 w-1/2 gap-y-10 justify-around justify-items-center mt-10">
-					{ allMedias && allMedias?.map((media, index) => (
+					{ MemberListData && MemberListData?.map((team, index) => (
 						<Card
 							isFooterBlurred
 							className="group/code-quakers-card rounded-full w-80"
@@ -74,11 +66,12 @@ const MaintenancePage = async () => {
 							<img
 								alt="Woman listing to music"
 								className="object-cover"
-								src={media?.media_original}
+								src={team?.img}
+								loading='lazy'
 							/>
 							<CardFooter className="flex-col ease-in-out justify-center transition-all bg-gradient-to-r from-cyan-500/55 to-blue-500/55 h-full w-full overflow-hidden py-1 absolute -bottom-full group-hover/code-quakers-card:bottom-0 group-focus/code-quakers-card:bottom-0 z-10">
-								<p className="text-center text-slate-100 text-3xl font-extrabold w-full text-black/80">{MemberListData[index].name}</p>
-								<p className="text-center text-slate-100 text-md font-extrabold w-full text-black/80">{MemberListData[index].role}</p>
+								<p className="text-center text-slate-100 text-3xl font-extrabold w-full text-black/80">{team.name}</p>
+								<p className="text-center text-slate-100 text-md font-extrabold w-full text-black/80">{team.role}</p>
 							</CardFooter>
 						</Card>
 					)) }
