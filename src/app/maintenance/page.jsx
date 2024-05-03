@@ -36,8 +36,8 @@ const MaintenancePage = async () => {
 	]
 
 	return (
-		<div className="maintenance-page w-screen min-h-screen dark:bg-black">
-			<div className="h-screen w-full flex flex-col p-8 lg:p-16 lg:flex-row gap-y-10 lg:gap-x-28 lg:gap-y-0">
+		<div className="maintenance-page w-screen min-h-svh dark:bg-black">
+			<div className="h-svh w-full flex flex-col p-8 lg:p-16 lg:flex-row gap-y-10 lg:gap-x-28 lg:gap-y-0">
 				<div className='border-black border-2 rounded-3xl w-full lg:w-1/2 h-full flex flex-col gap-y-3 justify-center items-center relative'>
 					<div className="meteors-wrapper absolute top-0 h-full w-full overflow-hidden">
 						<Meteors/>
@@ -55,7 +55,7 @@ const MaintenancePage = async () => {
 			</div>
 
 			{/* TODO -- MEET OUR CODE QUACKERS */}
-			<div className="min-h-screen w-full flex gap-x-28 p-16 items-center flex-col">
+			<div className="min-h-svh w-full flex gap-x-28 p-16 items-center flex-col">
 				<span className='font-bold text-3xl w-full text-center'>MEET OUR CODE QUACKERS</span>
 				<div className="code-quackers-list grid grid-cols-1 lg:grid-cols-2 w-1/2 gap-y-10 justify-around justify-items-center mt-10">
 					{ MemberListData && MemberListData?.map((team, index) => (

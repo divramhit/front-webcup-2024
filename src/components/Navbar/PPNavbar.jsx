@@ -36,9 +36,11 @@ export default function PPNavbar({session}) {
 				aria-label={isMenuOpen ? "Close menu" : "Open menu"}
 				className="sm:hidden"
 				/>
-				<NavbarBrand>
-				{/* <AcmeLogo /> */}
-				<p className="font-bold text-inherit">ACME</p>
+				<NavbarBrand className="h-full flex gap-x-2">
+					<div className="h-full p-2.5">
+						<img className='h-full object-fill rounded-full border-1 aspect-square' loading='lazy' src={`${process.env.NEXT_PUBLIC_APP_URL}/images/logo.png`} alt="puddle pirates logo"/>
+					</div>
+					<p className="font-bold text-inherit">PuddlePirates</p>
 				</NavbarBrand>
 			</NavbarContent>
 
