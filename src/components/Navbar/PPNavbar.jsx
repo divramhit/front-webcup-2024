@@ -19,7 +19,8 @@ import {
 	ModalBody,
 	Link,
 	Tabs,
-	Tab
+	Tab,
+	menuItem
 } from "@nextui-org/react";
 import ThemeSelector from "../theme/ThemeSelector";
 import PPModal from "../PPModal/PPModal";
@@ -48,6 +49,17 @@ export default function PPNavbar({session}) {
     }, []);
 
 	const menuItems = [
+		{
+			href: '/posts',
+			title: 'Posts',
+		},
+		{
+			href: '/about-us',
+			title: 'About Us',
+		},
+	]
+
+	const mobileMenuItems = [
 		{
 			href: '/about-us',
 			title: 'About Us'
@@ -85,7 +97,7 @@ export default function PPNavbar({session}) {
 	]
 
   	return (
-		<Navbar onMenuOpenChange={setIsMenuOpen} className={`group/navbar transition bg-transparent backdrop-blur-none ${ hasScrolled ? 'backdrop-blur-xl' : '' } hover:backdrop-blur-xl`}>
+		<Navbar onMenuOpenChange={setIsMenuOpen} className={`group/navbar transition bg-transparent backdrop-blur-none ${ hasScrolled ? 'backdrop-blur-xl bg-pp-secondary/50' : '' } hover:backdrop-blur-xl`}>
 			<NavbarContent justify="end">
 				<NavbarBrand as={Link} color="foreground" href={'/'} className="h-full flex justify-center lg:justify-start gap-x-2">
 					<div className="h-full p-2.5">
@@ -96,7 +108,15 @@ export default function PPNavbar({session}) {
 			</NavbarContent>
 
 			<NavbarContent className="hidden sm:flex gap-4" justify="end">
-				<NavbarItem>
+				{
+					menuItems && menuItems?.map((menuItem, index) => (
+						<NavbarItem as={Link} className="group/menu-item flex flex-col" href={menuItem?.href} color={menuItem?.color ?? "foreground"}>
+							{ menuItem?.title }
+							<span class="block opacity-0 w-0 group-hover/menu-item:w-full group-hover/menu-item:opacity-100 transition-all duration-500 h-0.5 bg-sky-600"></span>
+						</NavbarItem>
+					))
+				}
+				{/* <NavbarItem>
 					<Link color="foreground" href="/posts">
 						Posts
 					</Link>
@@ -105,7 +125,7 @@ export default function PPNavbar({session}) {
 					<Link href="/about-us" aria-current="page">
 						About us
 					</Link>
-				</NavbarItem>
+				</NavbarItem> */}
 				{
 					session?.authenticated ? <></> :
 					<PPModal
@@ -167,7 +187,7 @@ export default function PPNavbar({session}) {
 			</NavbarContent>
 			
 			<NavbarMenu className="bg-transparent items-end">
-				{menuItems.map((item, index) => (
+				{mobileMenuItems.map((item, index) => (
 					<NavbarMenuItem key={`${item}-${index}`} className={`${item?.isHidden ? 'hidden' : ''}`}>
 						<Link
 							color={ item?.color ?? 'foreground' }
