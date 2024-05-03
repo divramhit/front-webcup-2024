@@ -1,4 +1,4 @@
-'use server'
+'use client'
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 
@@ -6,7 +6,7 @@ const World = dynamic(() => import("../../../components/aceternity-ui/Globe").th
     ssr: false,
 });
 
-export default async function Posts() {
+export default function Posts() {
 
     const globeConfig = {
         pointSize: 4,

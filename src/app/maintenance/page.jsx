@@ -7,10 +7,10 @@ import {Card, CardHeader, CardBody, CardFooter} from "@nextui-org/card";
 const MaintenancePage = async () => {
 
 	const allMedias = await Promise.all([
-		customServerFetchWithoutAuth('api/medias/by_filename/akass-duck-6633fa247c91e755937751.jpg', 'GET'),
-		customServerFetchWithoutAuth('api/medias/by_filename/vee-duck-6633fa2481606651886378.jpg', 'GET'),
-		customServerFetchWithoutAuth('api/medias/by_filename/priyesh-duck-6633fa247f1ad637165946.jpg', 'GET'),
-		customServerFetchWithoutAuth('api/medias/by_filename/ramhit-duck-6633fa2480535309587314.jpg', 'GET')		
+		customServerFetchWithoutAuth('/api/medias/by_filename/akass-duck-6633fa247c91e755937751.jpg', 'GET'),
+		customServerFetchWithoutAuth('/api/medias/by_filename/vee-duck-6633fa2481606651886378.jpg', 'GET'),
+		customServerFetchWithoutAuth('/api/medias/by_filename/priyesh-duck-6633fa247f1ad637165946.jpg', 'GET'),
+		customServerFetchWithoutAuth('/api/medias/by_filename/ramhit-duck-6633fa2480535309587314.jpg', 'GET')		
 	]).then(async (responses) => {
 		// Assuming responses are already parsed as JSON in the customServerFetchWithoutAuth function
 		return [
@@ -70,6 +70,7 @@ const MaintenancePage = async () => {
 						<Card
 							isFooterBlurred
 							className="group/code-quakers-card rounded-full w-80"
+							key={index}
 						>
 							<img
 								alt="Woman listing to music"
