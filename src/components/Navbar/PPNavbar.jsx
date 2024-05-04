@@ -24,11 +24,11 @@ import {
 import {Accordion, AccordionItem} from "@nextui-org/accordion";
 import ThemeSelector from "../theme/ThemeSelector";
 import PPModal from "../PPModal/PPModal";
+import PPImage from "../PPImage/PPImage";
 import { SignupFormDemo } from "../aceternity-ui/SignupFormDemo";
 import { LoginForm } from "../pp-ui/LoginForm";
 import { logout } from "@/actions/actions";
 import { IconChevronDown, IconShoppingCart } from "@tabler/icons-react";
-import { customClientFetchWithoutAuth } from "@/lib/api";
 import { useTheme } from "next-themes";
 import { useSearchParams } from "next/navigation";
 
@@ -151,12 +151,12 @@ export default function PPNavbar({session}) {
 			<NavbarContent justify="end">
 				<NavbarBrand as={Link} color="foreground" href={'/'} className="h-full flex justify-center ml-10 lg:ml-0 lg:justify-start gap-x-2">
 					<div className="h-full p-2.5">
-						<img className='h-full object-fill rounded-full bg-black dark:bg-white aspect-square' loading='lazy' src={`https://puddlepirates.latchoomun.com/media/cache/original/logo-6636b0dad383b901868666.png`} alt="puddle pirates logo"/>
+						<PPImage className='h-full object-fill rounded-full bg-black dark:bg-white aspect-square' loading='lazy' src={`https://puddlepirates.latchoomun.com/media/cache/original/logo-6636b0dad383b901868666.png`} alt="puddle pirates logo"/>
 					</div>
 					<p className="font-bold text-inherit hidden sm:flex">PuddlePirates</p>
 				</NavbarBrand>
 				<a href="https://bff.ecoindex.fr/redirect/?url=https://puddlepirates.maurice.webcup.hodi.host" target="_blank">
-					<img src={`https://bff.ecoindex.fr/badge/?theme=${theme}&url=https://puddlepirates.maurice.webcup.hodi.host`} alt="Ecoindex Badge" />
+					<PPImage src={`https://bff.ecoindex.fr/badge/?theme=${theme}&url=https://puddlepirates.maurice.webcup.hodi.host`} alt="Ecoindex Badge" />
 				</a>
 			</NavbarContent>
 
