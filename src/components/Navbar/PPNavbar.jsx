@@ -19,8 +19,7 @@ import {
 	ModalBody,
 	Link,
 	Tabs,
-	Tab,
-	menuItem
+	Tab
 } from "@nextui-org/react";
 import ThemeSelector from "../theme/ThemeSelector";
 import PPModal from "../PPModal/PPModal";

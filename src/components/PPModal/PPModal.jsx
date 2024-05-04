@@ -21,7 +21,7 @@ const PPModal = ({ children, customTrigger, defaultButtonContent = "Quack Open" 
 			}
 			
 			<Modal isOpen={isOpen} backdrop='blur' onOpenChange={onOpenChange}>
-				<ModalContent>
+				<ModalContent className='h-[40rem]'>
 					{(onClose) => (
 						<>
 							{ children }
