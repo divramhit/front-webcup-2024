@@ -2,7 +2,8 @@ import React from 'react';
 import Countdown from './countdown';
 import { Meteors } from '@/components/aceternity-ui/Meteors';
 import { customServerFetchWithoutAuth } from '@/lib/api';
-import {Card, CardHeader, CardBody, CardFooter} from "@nextui-org/card";
+import {Card, CardFooter} from "@nextui-org/card";
+import PPImage from '@/components/PPImage/PPImage';
 import { getMediaOriginalUrl } from '@/utils/helpers/mediaHelper';
 
 const MaintenancePage = async () => {
@@ -64,7 +65,7 @@ const MaintenancePage = async () => {
 							className="group/code-quakers-card rounded-full w-80"
 							key={index}
 						>
-							<img
+							<PPImage
 								alt="Woman listing to music"
 								className="object-cover"
 								src={team?.img}
