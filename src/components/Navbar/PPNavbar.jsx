@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import {
 	Navbar,
 	NavbarBrand, 
@@ -154,7 +154,7 @@ export default function PPNavbar({session}) {
 				{
 					menuItems && menuItems?.map((menuItem, index) => {
 						return menuItem?.isDropdown ? (
-							<>
+							<Fragment key={index}>
 								<NavbarItem as={Link} className=" group/menu-item flex flex-col" href={menuItem?.href}  color={menuItem?.color ?? "foreground"}>
 									{ menuItem?.title }
 									<span className="block opacity-0 w-0 group-hover/menu-item:w-full group-hover/menu-item:opacity-100 transition-all duration-500 h-0.5 bg-pp-accent-1 dark:bg-pp-accent-dark-1"></span>
@@ -180,7 +180,7 @@ export default function PPNavbar({session}) {
 										)) }
 									</DropdownMenu>
 								</Dropdown>
-							</>
+							</Fragment>
 						) : (
 							<NavbarItem as={Link} key={index} className="group/menu-item flex flex-col" href={menuItem?.href} color={menuItem?.color ?? "foreground"}>
 								{ menuItem?.title }
@@ -216,9 +216,9 @@ export default function PPNavbar({session}) {
 				}
 			</NavbarContent>
 			
-			<Button radius="full" className="bg-transparent hidden lg:contents" isIconOnly>
+			<NavbarItem as={Button} radius="full" className="bg-transparent hidden lg:flex" isIconOnly>
 				<IconShoppingCart/>
-			</Button>
+			</NavbarItem>
 			<NavbarItem>
 				<ThemeSelector />
 			</NavbarItem>
@@ -256,7 +256,7 @@ export default function PPNavbar({session}) {
 			<NavbarMenu className="bg-pp-primary/50 dark:bg-pp-primary-dark/50 backdrop-blur-2xl items-end px-0">
 				{mobileMenuItems.map((item, index) => (
 					item?.isDropdown ? (
-						<div className={`w-full ${index == mobileMenuItems?.length - 1 ? '' : ' border-b-1'}`}>
+						<div key={index} className={`w-full ${index == mobileMenuItems?.length - 1 ? '' : ' border-b-1'}`}>
 							<Accordion>
 								<AccordionItem
 									key={index} 
