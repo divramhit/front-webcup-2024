@@ -32,9 +32,9 @@ export default async function middleware(req) {
     if (
         isPublicRoute &&
         isAuthenticated &&
-        !req.nextUrl.pathname.startsWith('/dashboard')
+        !req.nextUrl.pathname.startsWith('/')
     ) {
-        return NextResponse.redirect(new URL('/dashboard', req.nextUrl))
+        return NextResponse.redirect(new URL('/', req.nextUrl))
     }
     
     return NextResponse.next()
