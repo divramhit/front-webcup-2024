@@ -8,7 +8,7 @@ const PPImage = ({ wrapperClassName = '', ...imgProps }) => {
     const [onError, setOnError] = useState(false);
 
     // Use a ref to detect if the image is already cached
-    const imgRef = useRef(new Image());
+    const imgRef = useRef();
 
     useEffect(() => {
         console.log("Is Image Loading:", isImageLoading);
@@ -26,6 +26,7 @@ const PPImage = ({ wrapperClassName = '', ...imgProps }) => {
         <div className={cn(`${ isImageLoading ? 'animate-pulse bg-slate-200' : '' } w-full h-full`, wrapperClassName)}>
             <img
                 key={imgProps?.src}
+                ref={imgRef}
                 className={cn(`transition-opacity duration-300 ${ isImageLoading ? 'opacity-0' : 'opacity-100'} ${ onError ? 'hidden' : '' }`, imgProps.className)}
                 onLoad={() => setIsImageLoading(false)}
                 onError={() => setOnError(true)}
