@@ -1,5 +1,7 @@
 import { redirect } from "next/navigation";
 import { getSession } from "@/actions/actions";
+import useSession from "@/hooks/useSession";
+import { getClientSession } from "./auth";
 
 export async function customServerFetch(route, method, data={}) {
     const session = await getSession();
@@ -46,36 +48,45 @@ export async function customServerFetchWithoutAuth(route, method, data={}) {
     return fetchPromise;
 }
 
-// export async function customClientFetch(route, method, data={}) {
-//     const session = await getSession();
-//     if (!session) signOut();
-//     if (session?.status === "unauthenticated") signOut();
+export async function customClientFetch(route, method, data={}) {
+    const session = await getClientSession();
+    if (!session) return null;
+    if (!session?.authenticated) return null;
 
-//     const apiUrl = process.env.NEXT_PUBLIC_BACKEND_API_URL;
-//     const url = apiUrl + route;
-//     const options = {
-//         method: method,
-//         headers: {
-//             "Content-Type" : "application/json",
-//             "Authorization" : `Bearer ${session?.token}`
-//         }
-//     }
+    const apiUrl = process.env.NEXT_PUBLIC_BACKEND_API_URL;
+    const url = apiUrl + route;
+    const options = {
+        method: method,
+        headers: {
+            "Content-Type" : "application/json",
+            "Authorization" : `Bearer ${session?.user?.token}`
+        }
+    }
 
-//     if (method === "POST" || method === "PUT") {
-//         options.body = JSON.stringify(data);
-//     }
+    if (method === "POST" || method === "PUT") {
+        options.body = JSON.stringify(data);
+    }
 
-//     const fetchPromise = await fetch(url, options);
+    const fetchPromise = await fetch(url, options);
 
-//     if (fetchPromise.status === 401) {
-//         signOut();
-//     }
+    return fetchPromise;
+}
+export async function customClientFetchWithoutAuth(route, method, data={}) {
+    const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+    const url = apiUrl + route;
+    const options = {
+        method: method,
+        headers: {
+            "Content-Type" : "application/json",
+        }
+    }
 
-//     if (fetchPromise.status === 200) {
-//         const response = await fetchPromise.json();
-//         return response;
-//     }
+    if (method === "POST" || method === "PUT") {
+        options.body = JSON.stringify(data);
+    }
 
-//     return null;
-// }
+    const fetchPromise = await fetch(url, options);
+
+    return fetchPromise;
+}
 
