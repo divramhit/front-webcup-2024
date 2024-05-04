@@ -10,7 +10,7 @@ import { useDisclosure } from '@nextui-org/react';
 const PPModal = ({ children, customTrigger, defaultButtonContent = "Quack Open", manualOpen=false }) => {
 	const {isOpen, onOpen, onOpenChange} = useDisclosure();
 	useEffect(() => {
-		onOpen(true);
+		onOpen(manualOpen);
 	}, [])
 	return (
 		<>
