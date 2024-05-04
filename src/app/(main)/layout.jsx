@@ -6,7 +6,7 @@ export default async function MainLayout({ children }) {
 	const session = await getSession();
     return (
 		<div className={`main-app-wrapper`}>
-			<StarsCanvas />
+			{/* <StarsCanvas /> */}
 			<PPNavbar session={session}/>
 			{children}
 		</div>
