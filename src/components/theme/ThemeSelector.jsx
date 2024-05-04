@@ -49,7 +49,7 @@ export default function ThemeSelector() {
 				isSelected={theme === "light"}
 				onChange={handleThemeChange}
 			/>
-			<Button isIconOnly onClick={handleOnClick} className="md:hidden" aria-label="Like">
+			<Button isIconOnly onClick={handleOnClick} className="md:hidden">
 				{
 					theme == 'dark' ? <IconMoon /> : <IconSun />
 				}

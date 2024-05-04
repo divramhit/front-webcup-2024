@@ -26,6 +26,7 @@ import PPModal from "../PPModal/PPModal";
 import { SignupFormDemo } from "../aceternity-ui/SignupFormDemo";
 import { LoginForm } from "../pp-ui/LoginForm";
 import { logout } from "@/actions/actions";
+import { IconChevronDown } from "@tabler/icons-react";
 
 export default function PPNavbar({session}) {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -56,6 +57,25 @@ export default function PPNavbar({session}) {
 			href: '/about-us',
 			title: 'About Us',
 		},
+		{
+			href: '/products',
+			title: 'Shop',
+			dropdownItems: [
+				{
+					href: '/products/1',
+					title: 'Bedroom'
+				},
+				{
+					href: '/products/2',
+					title: 'Kitchen'
+				},
+				{
+					href: '/products/3',
+					title: 'Garden'
+				}
+			],
+			isDropdown: true
+		}
 	]
 
 	const mobileMenuItems = [
@@ -106,14 +126,43 @@ export default function PPNavbar({session}) {
 				</NavbarBrand>
 			</NavbarContent>
 
-			<NavbarContent className="hidden sm:flex gap-4" justify="end">
+			<NavbarContent className="hidden sm:flex items-center gap-4" justify="end">
 				{
-					menuItems && menuItems?.map((menuItem, index) => (
-						<NavbarItem as={Link} key={index} className="group/menu-item flex flex-col" href={menuItem?.href} color={menuItem?.color ?? "foreground"}>
-							{ menuItem?.title }
-							<span class="block opacity-0 w-0 group-hover/menu-item:w-full group-hover/menu-item:opacity-100 transition-all duration-500 h-0.5 bg-pp-accent-1 dark:bg-pp-accent-dark-1"></span>
-						</NavbarItem>
-					))
+					menuItems && menuItems?.map((menuItem, index) => {
+						return menuItem?.isDropdown ? (
+							<>
+								<NavbarItem as={Link} className="flex flex-col" href={menuItem?.href}  color={menuItem?.color ?? "foreground"}>
+									{ menuItem?.title }
+								</NavbarItem>
+								<Dropdown>
+								<DropdownTrigger>
+									<Button
+										isIconOnly
+										className="p-0 w-fit min-w-0 bg-transparent h-fit -ml-3"
+									>
+										<IconChevronDown size={16}/>
+									</Button>
+								</DropdownTrigger>
+									<DropdownMenu>
+										{ menuItem?.dropdownItems?.map((dropdownItem, index) => (
+											<DropdownItem
+												key={index}
+												href={dropdownItem?.href}
+											>
+												{dropdownItem?.title}
+											</DropdownItem>
+										)) }
+									</DropdownMenu>
+								</Dropdown>
+							</>
+						) : (
+							<NavbarItem as={Link} key={index} className="group/menu-item flex flex-col" href={menuItem?.href} color={menuItem?.color ?? "foreground"}>
+								{ menuItem?.title }
+								<span className="block opacity-0 w-0 group-hover/menu-item:w-full group-hover/menu-item:opacity-100 transition-all duration-500 h-0.5 bg-pp-accent-1 dark:bg-pp-accent-dark-1"></span>
+							</NavbarItem>
+						)
+
+					})
 				}
 				{
 					session?.authenticated ? <></> :
