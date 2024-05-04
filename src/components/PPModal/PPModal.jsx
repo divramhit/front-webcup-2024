@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
 	Modal, 
 	ModalContent, 
@@ -7,9 +7,11 @@ import {Button} from "@nextui-org/button";
 import { cloneWithButtonPress } from './helper';
 import { useDisclosure } from '@nextui-org/react';
 
-const PPModal = ({ children, customTrigger, defaultButtonContent = "Quack Open" }) => {
+const PPModal = ({ children, customTrigger, defaultButtonContent = "Quack Open", manualOpen=false }) => {
 	const {isOpen, onOpen, onOpenChange} = useDisclosure();
-
+	useEffect(() => {
+		onOpen(true);
+	}, [])
 	return (
 		<>
 			{ 
