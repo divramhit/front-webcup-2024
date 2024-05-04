@@ -27,7 +27,6 @@ export async function customServerFetch(route, method, data={}) {
 }
 
 export async function customServerFetchWithoutAuth(route, method, data={}) {
-
     const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
     const url = apiUrl + route;
     const options = {
