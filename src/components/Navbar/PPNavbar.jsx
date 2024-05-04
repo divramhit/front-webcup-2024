@@ -21,12 +21,13 @@ import {
 	Tabs,
 	Tab
 } from "@nextui-org/react";
+import {Accordion, AccordionItem} from "@nextui-org/accordion";
 import ThemeSelector from "../theme/ThemeSelector";
 import PPModal from "../PPModal/PPModal";
 import { SignupFormDemo } from "../aceternity-ui/SignupFormDemo";
 import { LoginForm } from "../pp-ui/LoginForm";
 import { logout } from "@/actions/actions";
-import { IconChevronDown } from "@tabler/icons-react";
+import { IconChevronDown, IconShoppingCart } from "@tabler/icons-react";
 
 export default function PPNavbar({session}) {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -50,14 +51,6 @@ export default function PPNavbar({session}) {
 
 	const menuItems = [
 		{
-			href: '/posts',
-			title: 'Posts',
-		},
-		{
-			href: '/about-us',
-			title: 'About Us',
-		},
-		{
 			href: '/products',
 			title: 'Shop',
 			dropdownItems: [
@@ -75,14 +68,18 @@ export default function PPNavbar({session}) {
 				}
 			],
 			isDropdown: true
+		},
+		{
+			href: '/about-us',
+			title: 'About Us',
+		},
+		{
+			href: '/contact-us',
+			title: 'Contact Us',
 		}
 	]
 
 	const mobileMenuItems = [
-		{
-			href: '/about-us',
-			title: 'About Us'
-		},
 		{
 			href: '/login',
 			title: 'Login',
@@ -92,6 +89,33 @@ export default function PPNavbar({session}) {
 			href: '/sign-up',
 			title: 'Sign Up',
 			isHidden: session?.authenticated ? true : false
+		},
+		{
+			href: '/products',
+			title: 'Shop',
+			isDropdown: true,
+			dropdownItems: [
+				{
+					href: '/products/1',
+					title: 'Bedroom'
+				},
+				{
+					href: '/products/2',
+					title: 'Kitchen'
+				},
+				{
+					href: '/products/3',
+					title: 'Garden'
+				}
+			]
+		},
+		{
+			href: '/about-us',
+			title: 'About Us'
+		},
+		{
+			href: '/contact-us',
+			title: 'Contact Us',
 		},
 		{
 			href: '#',
@@ -131,23 +155,25 @@ export default function PPNavbar({session}) {
 					menuItems && menuItems?.map((menuItem, index) => {
 						return menuItem?.isDropdown ? (
 							<>
-								<NavbarItem as={Link} className="flex flex-col" href={menuItem?.href}  color={menuItem?.color ?? "foreground"}>
+								<NavbarItem as={Link} className=" group/menu-item flex flex-col" href={menuItem?.href}  color={menuItem?.color ?? "foreground"}>
 									{ menuItem?.title }
+									<span className="block opacity-0 w-0 group-hover/menu-item:w-full group-hover/menu-item:opacity-100 transition-all duration-500 h-0.5 bg-pp-accent-1 dark:bg-pp-accent-dark-1"></span>
 								</NavbarItem>
-								<Dropdown>
-								<DropdownTrigger>
-									<Button
-										isIconOnly
-										className="p-0 w-fit min-w-0 bg-transparent h-fit -ml-3"
-									>
-										<IconChevronDown size={16}/>
-									</Button>
-								</DropdownTrigger>
+								<Dropdown className=" bg-pp-primary/30 backdrop-blur-sm">
+									<DropdownTrigger>
+										<Button
+											isIconOnly
+											className="p-0 w-fit min-w-0 bg-transparent h-fit -ml-3"
+										>
+											<IconChevronDown size={16}/>
+										</Button>
+									</DropdownTrigger>
 									<DropdownMenu>
 										{ menuItem?.dropdownItems?.map((dropdownItem, index) => (
 											<DropdownItem
 												key={index}
 												href={dropdownItem?.href}
+												className="data-[hover=true]:bg-pp-accent-1/70 data-[hover=true]:text-white"
 											>
 												{dropdownItem?.title}
 											</DropdownItem>
@@ -190,10 +216,13 @@ export default function PPNavbar({session}) {
 				}
 			</NavbarContent>
 			
+			<Button radius="full" className="bg-transparent hidden lg:contents" isIconOnly>
+				<IconShoppingCart/>
+			</Button>
 			<NavbarItem>
 				<ThemeSelector />
 			</NavbarItem>
-			
+
 			<NavbarContent className="hidden lg:contents" as="div" justify="end">
 				{
 					session?.authenticated ? 
@@ -224,19 +253,49 @@ export default function PPNavbar({session}) {
 				}
 			</NavbarContent>
 			
-			<NavbarMenu className="bg-transparent backdrop-blur-2xl items-end px-0">
+			<NavbarMenu className="bg-pp-primary/50 dark:bg-pp-primary-dark/50 backdrop-blur-2xl items-end px-0">
 				{mobileMenuItems.map((item, index) => (
-					<NavbarMenuItem key={`${item}-${index}`} className={`w-full flex justify-end py-5 px-3 border-black dark:border-white ${item?.isHidden ? 'hidden' : ''} ${index == mobileMenuItems?.length - 1 ? '' : ' border-b-1'}`}>
-						<Link
-							color={ item?.color ?? 'foreground' }
-							className={`font-bold text-2xl`}
-							href={item?.href}
-							size="lg"
-						>
-							{item?.title}
-						</Link>
-					</NavbarMenuItem>
+					item?.isDropdown ? (
+						<div className={`w-full ${index == mobileMenuItems?.length - 1 ? '' : ' border-b-1'}`}>
+							<Accordion>
+								<AccordionItem
+									key={index} 
+									aria-label={item?.title} 
+									title={item?.title}
+									classNames={{
+										titleWrapper: 'text-end font-bold text-lg'
+									}}
+								>
+									<div className="flex flex-col gap-y-3">
+										{item?.dropdownItems?.map((dropdownItem, index) => (
+											<Link
+												key={index}
+												color={ dropdownItem?.color ?? 'foreground' }
+												className={`w-full flex justify-end font-bold text-lg`}
+												href={dropdownItem?.href}
+												size="lg"
+											>
+												{dropdownItem?.title}
+											</Link>
+										))}
+									</div>
+								</AccordionItem>
+							</Accordion>
+						</div>
+					) : (
+						<NavbarMenuItem key={`${item}-${index}`} className={`w-full flex justify-end py-5 px-3 border-black dark:border-white ${item?.isHidden ? 'hidden' : ''} ${index == mobileMenuItems?.length - 1 ? '' : ' border-b-1'}`}>
+							<Link
+								color={ item?.color ?? 'foreground' }
+								className={`font-bold text-lg`}
+								href={item?.href}
+								size="lg"
+							>
+								{item?.title}
+							</Link>
+						</NavbarMenuItem>
+					)
 				))}
+
 			</NavbarMenu>
 			<NavbarMenuToggle
 				aria-label={isMenuOpen ? "Close menu" : "Open menu"}
