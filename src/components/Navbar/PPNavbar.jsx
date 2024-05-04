@@ -96,9 +96,9 @@ export default function PPNavbar({session}) {
 	]
 
   	return (
-		<Navbar onMenuOpenChange={setIsMenuOpen} className={`group/navbar transition bg-transparent backdrop-blur-none ${ hasScrolled ? 'backdrop-blur-xl bg-pp-secondary/50' : '' } hover:backdrop-blur-xl`}>
+		<Navbar onMenuOpenChange={setIsMenuOpen} className={`group/navbar transition bg-transparent backdrop-blur-none ${ hasScrolled ? 'backdrop-blur-xl bg-pp-primary/50' : '' } hover:bg-pp-primary/50' hover:backdrop-blur-xl`}>
 			<NavbarContent justify="end">
-				<NavbarBrand as={Link} color="foreground" href={'/'} className="h-full flex justify-center lg:justify-start gap-x-2">
+				<NavbarBrand as={Link} color="foreground" href={'/'} className="h-full flex justify-center ml-10 lg:ml-0 lg:justify-start gap-x-2">
 					<div className="h-full p-2.5">
 						<img className='h-full object-fill rounded-full border-1 aspect-square' loading='lazy' src={`${process.env.NEXT_PUBLIC_APP_URL}/images/logo.png`} alt="puddle pirates logo"/>
 					</div>
@@ -175,12 +175,12 @@ export default function PPNavbar({session}) {
 				}
 			</NavbarContent>
 			
-			<NavbarMenu className="bg-transparent items-end">
+			<NavbarMenu className="bg-transparent backdrop-blur-2xl items-end px-0">
 				{mobileMenuItems.map((item, index) => (
-					<NavbarMenuItem key={`${item}-${index}`} className={`${item?.isHidden ? 'hidden' : ''}`}>
+					<NavbarMenuItem key={`${item}-${index}`} className={`w-full flex justify-end py-5 px-3 border-black dark:border-white ${item?.isHidden ? 'hidden' : ''} ${index == mobileMenuItems?.length - 1 ? '' : ' border-b-1'}`}>
 						<Link
 							color={ item?.color ?? 'foreground' }
-							className="w-full"
+							className={`font-bold text-2xl`}
 							href={item?.href}
 							size="lg"
 						>
