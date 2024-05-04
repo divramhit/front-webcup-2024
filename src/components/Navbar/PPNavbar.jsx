@@ -96,7 +96,7 @@ export default function PPNavbar({session}) {
 	]
 
   	return (
-		<Navbar onMenuOpenChange={setIsMenuOpen} className={`group/navbar transition bg-transparent backdrop-blur-none ${ hasScrolled ? 'backdrop-blur-xl bg-pp-primary/50' : '' } hover:bg-pp-primary/50' hover:backdrop-blur-xl`}>
+		<Navbar onMenuOpenChange={setIsMenuOpen} className={`group/navbar transition bg-transparent backdrop-blur-none ${ hasScrolled ? 'backdrop-blur-xl bg-pp-primary/50' : '' } hover:bg-pp-primary/50 hover:backdrop-blur-xl`}>
 			<NavbarContent justify="end">
 				<NavbarBrand as={Link} color="foreground" href={'/'} className="h-full flex justify-center ml-10 lg:ml-0 lg:justify-start gap-x-2">
 					<div className="h-full p-2.5">
@@ -111,7 +111,7 @@ export default function PPNavbar({session}) {
 					menuItems && menuItems?.map((menuItem, index) => (
 						<NavbarItem as={Link} className="group/menu-item flex flex-col" href={menuItem?.href} color={menuItem?.color ?? "foreground"}>
 							{ menuItem?.title }
-							<span class="block opacity-0 w-0 group-hover/menu-item:w-full group-hover/menu-item:opacity-100 transition-all duration-500 h-0.5 bg-sky-600"></span>
+							<span class="block opacity-0 w-0 group-hover/menu-item:w-full group-hover/menu-item:opacity-100 transition-all duration-500 h-0.5 bg-pp-accent-1"></span>
 						</NavbarItem>
 					))
 				}
