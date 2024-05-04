@@ -66,7 +66,7 @@ const MaintenancePage = async () => {
 							key={index}
 						>
 							<PPImage
-								alt="Woman listing to music"
+								alt={team?.title}
 								className="object-cover"
 								src={team?.img}
 								loading='lazy'
