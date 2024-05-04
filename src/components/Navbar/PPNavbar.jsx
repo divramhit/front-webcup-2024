@@ -130,7 +130,7 @@ export default function PPNavbar({session}) {
 							<Tabs color="secondary" aria-label="Login Tabs" radius="full">
 								{ 
 									LoginModalTabs && LoginModalTabs?.map((tabItem, index) => (
-										<Tab key={tabItem?.key} title={tabItem?.title}>
+										<Tab key={tabItem?.key} className="h-full flex items-center" title={tabItem?.title}>
 											{ tabItem?.content }
 										</Tab>
 									))
