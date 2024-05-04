@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import { getSession } from './actions/actions'
 
 // 1. Specify protected and public routes
-const protectedRoutes = ['/posts']
+const protectedRoutes = ['/cart', '/checkout', '/orders']
 const publicRoutes = ['/login', '/signup', '/maintenance']
  
 export default async function middleware(req) {
@@ -25,7 +25,7 @@ export default async function middleware(req) {
         
     // 5. Redirect to /login if the user is not authenticated
     if (isProtectedRoute && !isAuthenticated) {
-        return NextResponse.redirect(new URL('/login', req.nextUrl))
+        return NextResponse.redirect(new URL('/?login=true', req.nextUrl))
     }
     
     // 6. Redirect to /dashboard if the user is authenticated
