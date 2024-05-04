@@ -50,7 +50,7 @@ export const login = async (formData) => {
 
     await session.save();
 
-    redirect("/dashboard")
+    redirect("/")
 }
 
 export const logout = async () => {

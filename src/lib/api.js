@@ -12,7 +12,8 @@ export async function customServerFetch(route, method, data={}) {
         headers: {
             "Content-Type" : "application/json",
             "Authorization" : `Bearer ${session?.user?.token}`
-        }
+        },
+        cache: "no-store"
     }
 
     if (method === "POST" || method === "PUT") {
