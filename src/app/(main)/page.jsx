@@ -7,14 +7,10 @@ import { HeroHighlight } from "@/components/baseAceternityUi/hero-highlight/hero
 
 const Home = () => {
     return (
-		<div className="w-100 overflow-hidden relative">
-			{/* <PPButton/> */}
-			<PPSectionBlock className={`fixed top-0`}>
-				<HeroHighlight className={`max-h-full`}>
-				</HeroHighlight>
+		<div className="w-100">
+			<PPSectionBlock className={'text-black'}>
+				TEST
 			</PPSectionBlock>
-			{/* <TracingBeamDemo/> */}
-			
 		</div>
     )
 }

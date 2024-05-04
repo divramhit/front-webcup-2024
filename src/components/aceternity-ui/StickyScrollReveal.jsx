@@ -39,9 +39,9 @@ export const StickyScrollReveal = ({
         "var(--neutral-900)",
     ];
     const linearGradients = [
-        "linear-gradient(to bottom right, var(--cyan-500), var(--emerald-500))",
-        "linear-gradient(to bottom right, var(--pink-500), var(--indigo-500))",
-        "linear-gradient(to bottom right, var(--orange-500), var(--yellow-500))",
+        "linear-gradient(to bottom right,var(--cyan-500),var(--emerald-500))",
+        "linear-gradient(to bottom right,var(--pink-500),var(--indigo-500))",
+        "linear-gradient(to bottom right,var(--orange-500),var(--yellow-500))",
     ];
     return (
         <motion.div
@@ -84,7 +84,7 @@ export const StickyScrollReveal = ({
         </div>
         <motion.div
             animate={{
-            background: linearGradients[activeCard % linearGradients.length],
+            backgroundImage: linearGradients[activeCard % linearGradients.length],
             }}
             className={cn(
             "hidden lg:block h-60 w-80 rounded-md bg-white sticky top-10 overflow-hidden",
