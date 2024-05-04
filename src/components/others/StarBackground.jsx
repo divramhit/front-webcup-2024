@@ -1,16 +1,18 @@
 "use client";
 
 import React, { useState, useRef, Suspense } from "react";
+import {useTheme} from "next-themes";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial, Preload } from "@react-three/drei";
 // @ts-ignore
 import * as random from "maath/random/dist/maath-random.esm";
 
 const StarBackground = (props) => {
-  const ref = useRef();
-  const [sphere] = useState(() =>
-    random.inSphere(new Float32Array(5000), { radius: 1.2 })
-  );
+	const { theme } = useTheme()
+	const ref = useRef();
+	const [sphere] = useState(() =>
+		random.inSphere(new Float32Array(5000), { radius: 1.2 })
+	);
 
   useFrame((state, delta) => {
     ref.current.rotation.x -= delta/10;
@@ -29,8 +31,8 @@ const StarBackground = (props) => {
         >
             <PointMaterial
                 transparent
-                color="#fff"
-                size={0.002}
+                color={ theme === "light" ? 'black' : 'white' }
+                size={0.003}
                 sizeAttenuation={true}
                 dethWrite={false}
             />
@@ -40,7 +42,7 @@ const StarBackground = (props) => {
 };
 
 const StarsCanvas = () => (
-    <div className="w-full h-auto fixed inset-0 z-[20]">
+    <div className="w-full h-auto fixed inset-0 z-[0]">
         <Canvas camera={{position: [0, 0, 1]}}>
         <Suspense fallback={null}>
             <StarBackground />
