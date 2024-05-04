@@ -28,10 +28,15 @@ import { SignupFormDemo } from "../aceternity-ui/SignupFormDemo";
 import { LoginForm } from "../pp-ui/LoginForm";
 import { logout } from "@/actions/actions";
 import { IconChevronDown, IconShoppingCart } from "@tabler/icons-react";
+import { useTheme } from "next-themes";
+import { useSearchParams } from "next/navigation";
 
 export default function PPNavbar({session}) {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [hasScrolled, setHasScrolled] = useState(false);
+	const {theme} = useTheme();
+	const params= useSearchParams();
+	console.log(params);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -148,6 +153,9 @@ export default function PPNavbar({session}) {
 					</div>
 					<p className="font-bold text-inherit hidden sm:flex">PuddlePirates</p>
 				</NavbarBrand>
+				<a href="https://bff.ecoindex.fr/redirect/?url=https://puddlepirates.maurice.webcup.hodi.host" target="_blank">
+					<img src={`https://bff.ecoindex.fr/badge/?theme=${theme}&url=https://puddlepirates.maurice.webcup.hodi.host`} alt="Ecoindex Badge" />
+				</a>
 			</NavbarContent>
 
 			<NavbarContent className="hidden sm:flex items-center gap-4" justify="end">
@@ -192,7 +200,7 @@ export default function PPNavbar({session}) {
 				}
 				{
 					session?.authenticated ? <></> :
-					<PPModal
+					<PPModal manualOpen={params.get('login') ? params.get("login") === "true" : false} 
 						customTrigger={
 							<Tooltip content="or Sign Up" closeDelay={20} offset={-7}>
 								<Button radius="full" className="transition bg-pp-primary hover:bg-pp-accent-1 text-white shadow-lg font-bold">
@@ -216,7 +224,7 @@ export default function PPNavbar({session}) {
 				}
 			</NavbarContent>
 			
-			<NavbarItem as={Button} radius="full" className="bg-transparent hidden lg:flex" isIconOnly>
+			<NavbarItem as={Link} href="/cart" radius="full" className="bg-transparent hidden lg:flex" isIconOnly>
 				<IconShoppingCart/>
 			</NavbarItem>
 			<NavbarItem>
