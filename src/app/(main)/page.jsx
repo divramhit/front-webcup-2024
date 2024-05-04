@@ -41,7 +41,7 @@ const Home = async () => {
 							<div className="w-36 lg:w-72 shadow-lg absolute top-4 left-4 p-2 z-0 bg-gradient-to-r from-pp-primary to-pp-secondary rounded-lg">
 								<PPImage
 									alt="broken-heart"
-									className="object-cover"
+									className="object-cover rotate-12"
 									src={kenImg}
 									loading='lazy'
 
@@ -50,24 +50,26 @@ const Home = async () => {
 							<div className="w-36 lg:w-72 absolute shadow-lg bottom-4 right-4 p-2 z-0 bg-gradient-to-r from-pp-primary to-pp-secondary rounded-lg">
 								<PPImage
 									alt="broken-heart"
-									className="object-cover rounded-lg"
+									className="object-cover rounded-lg rotate-[-12deg]"
 									src={barbieImg}
 									loading='lazy'
 								/>
 							</div>
-							<PPImage
-								alt="broken-heart"
-								className="object-cover w-12 lg:w-20"
-								src={brokenHeartImg}
-								loading='lazy'
-								wrapperClassName="absolute top-0 flex justify-center items-center z-1"
-							/>
+							<div className="absolute top-0 flex w-full h-full justify-center items-center z-1">
+								<PPImage
+									alt="broken-heart"
+									className="object-cover animate-bounce mt-6"
+									src={brokenHeartImg}
+									loading='lazy'
+									wrapperClassName="w-16 h-16 rotate-[-12deg] lg:w-32 lg:h-32"
+								/>
+							</div>
 						</div>
 					</div>
 				</div>
 			</PPSectionBlock>
 			<PPSectionBlock className={'h-fit lg:h-[20svh] flex justify-center items-center'}>
-				<div className="w-11/12 px-10 py-6 lg:py-0 rounded-[8px] backdrop-blur-sm text-center text-xl font-bold flex items-center bg-pp-home-intro/70 dark:bg-pp-home-intro-dark/70 h-full">
+				<div className="w-9/12 px-10 py-6 lg:py-0 rounded-[8px] backdrop-blur-sm text-center text-xl font-bold flex items-center text-white bg-gradient-to-r from-pp-primary to-pp-secondary h-full">
 					Welcome to our resale haven, where treasures find new owners and stories continue to unfold! 
 					Dive into our diverse selection of pre-loved goods, where you might just stumble upon Ken&apos;s collectible waiting to be rediscovered. 
 					From vintage finds to modern marvels, our platform offers something for everyone.Let the adventure begin!
