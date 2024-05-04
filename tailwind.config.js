@@ -12,9 +12,9 @@ module.exports = {
 	theme: {
 		extend: {
 			colors: {
-				"pp-primary": "#4060a2",
-				"pp-secondary": "#4060a2",
-				"pp-accent-1": "#4060a2",
+				"pp-primary": "#00d4ff",
+				"pp-secondary": "#e54194",
+				"pp-accent-1": "#A968B0",
 				"pp-accent-2": "#4060a2",
 				"pp-accent-3": "#4060a2",
 				"pp-primary-dark": "#4060a2",
@@ -27,10 +27,10 @@ module.exports = {
 				"gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
 				"gradient-conic":
 				"conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-				"pp-primary-gradient": "",
-				"pp-primary-gradient-dark": "",
-				"pp-secondary-gradient": "",
-				"pp-secondary-gradient-dark": "",
+				"pp-primary-gradient": "radial-gradient(circle, rgba(229,65,148,1) 0%, rgba(0,212,255,1) 100%)",
+				"pp-primary-gradient-dark": "radial-gradient(circle, rgba(229,65,148,1) 0%, rgba(0,212,255,1) 100%)",
+				"pp-secondary-gradient": "radial-gradient(circle, rgba(229,65,148,1) 0%, rgba(0,212,255,1) 100%)",
+				"pp-secondary-gradient-dark": "radial-gradient(circle, rgba(229,65,148,1) 0%, rgba(0,212,255,1) 100%)",
 			},
 			boxShadow: {
 				input: `0px 2px 3px -1px rgba(0,0,0,0.1), 0px 1px 0px 0px rgba(25,28,33,0.02), 0px 0px 0px 1px rgba(25,28,33,0.08)`,
