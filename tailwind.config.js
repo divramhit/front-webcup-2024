@@ -1,3 +1,4 @@
+
 const {nextui} = require("@nextui-org/react");
 const {default: flattenColorPalette} = require("tailwindcss/lib/util/flattenColorPalette");
 const svgToDataUri = require("mini-svg-data-uri");
@@ -18,6 +19,8 @@ module.exports = {
 				"pp-accent-1": "#A968B0",
 				"pp-accent-2": "#4060a2",
 				"pp-accent-3": "#4060a2",
+				"pp-home-intro": "#e3e3e3",
+				"pp-home-intro-dark": "#e3e3e3",
 				"pp-primary-dark": "#4060a2",
 				"pp-secondary-dark": "#4060a2",
 				"pp-accent-dark-1": "#4060a2",
