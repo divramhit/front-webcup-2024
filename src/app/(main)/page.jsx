@@ -10,10 +10,12 @@ const Home = () => {
     return (
 		<div className="w-100 overflow-hidden">
 			{/* <PPButton/> */}
-			<PPSectionBlock>
-				<HeroHighlightDemo/>
+			<PPSectionBlock className={`absolute top-0`}>
+				<HeroHighlight className={`max-h-full overflow-y-scroll`}>
+					<TracingBeamDemo/>
+				</HeroHighlight>
 			</PPSectionBlock>
-			<TracingBeamDemo/>
+			
 		</div>
     )
 }
