@@ -1,6 +1,5 @@
 import { redirect } from "next/navigation";
 import { getSession } from "@/actions/actions";
-import useSession from "@/hooks/useSession";
 import { getClientSession } from "./auth";
 
 export async function customServerFetch(route, method, data={}) {
