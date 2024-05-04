@@ -32,7 +32,8 @@ export async function customServerFetchWithoutAuth(route, method, data={}) {
         method: method,
         headers: {
             "Content-Type" : "application/json",
-        }
+        },
+        cache : "no-store",
     }
 
     if (method === "POST" || method === "PUT") {
