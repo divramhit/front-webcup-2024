@@ -1,7 +1,7 @@
 "use server"
 
 import { customServerFetchWithoutAuth } from "@/lib/api";
-import ProductCard from "@/components/product/ProductCard";
+import { HeroParallax } from "@/components/baseAceternityUi/hero-parallax/hero-parallax";
 
 export default async function Products() {
     async function getAllProducts() {
@@ -16,14 +16,8 @@ export default async function Products() {
     const products = await getAllProducts();
 
     return (
-        <>
-            {
-                products.map(product => {
-                    return <>
-                        <ProductCard product={product}/>
-                    </>
-                })
-            }
-        </>
+        <div className="pointer-events-none">
+            <HeroParallax products={products}/>
+        </div>
     )
 }

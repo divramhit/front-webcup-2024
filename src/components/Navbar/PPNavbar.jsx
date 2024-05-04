@@ -140,7 +140,7 @@ export default function PPNavbar({session}) {
 	]
 
   	return (
-		<Navbar onMenuOpenChange={setIsMenuOpen} className={`group/navbar transition bg-transparent backdrop-blur-none ${ hasScrolled ? 'backdrop-blur-xl bg-pp-primary/50 dark:bg-pp-primary-dark/50' : '' } hover:bg-pp-primary/50 dark:hover:bg-pp-primary-dark/50 hover:backdrop-blur-xl`}>
+		<Navbar onMenuOpenChange={setIsMenuOpen} className={`group/navbar transition bg-transparent backdrop-blur-none ${ hasScrolled ? 'backdrop-blur-xl bg-pp-primary/30 dark:bg-pp-primary-dark/50' : '' } hover:bg-pp-primary/30 dark:hover:bg-pp-primary-dark/50 hover:backdrop-blur-xl`}>
 			<NavbarContent justify="end">
 				<NavbarBrand as={Link} color="foreground" href={'/'} className="h-full flex justify-center ml-10 lg:ml-0 lg:justify-start gap-x-2">
 					<div className="h-full p-2.5">
@@ -195,7 +195,7 @@ export default function PPNavbar({session}) {
 					<PPModal
 						customTrigger={
 							<Tooltip content="or Sign Up" closeDelay={20} offset={-7}>
-								<Button radius="full" className="bg-gradient-to-r from-violet-600 to-indigo-600 text-white shadow-lg font-bold">
+								<Button radius="full" className="transition bg-pp-primary hover:bg-pp-accent-1 text-white shadow-lg font-bold">
 									LOGIN
 								</Button>
 							</Tooltip>
