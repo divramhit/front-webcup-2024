@@ -1,6 +1,7 @@
 'use client'
-import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
+import { Button } from "@nextui-org/react";
+import { triggerGpt } from "@/services/gpt";
 
 const World = dynamic(() => import("../../../components/aceternity-ui/Globe").then((m) => m.World), {
     ssr: false,
@@ -397,6 +398,7 @@ export default function Posts() {
     return (
         <>
             <World data={sampleArcs} globeConfig={globeConfig} />;
+              <Button onClick={triggerGpt}>trigger gpt</Button>
         </>
     )
 }
