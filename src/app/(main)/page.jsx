@@ -13,7 +13,7 @@ const Home = () => {
 				<HeroHighlight className={`max-h-full`}>
 				</HeroHighlight>
 			</PPSectionBlock>
-			<TracingBeamDemo/>
+			{/* <TracingBeamDemo/> */}
 			
 		</div>
     )
