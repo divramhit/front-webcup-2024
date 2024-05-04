@@ -109,7 +109,7 @@ export default function PPNavbar({session}) {
 			<NavbarContent className="hidden sm:flex gap-4" justify="end">
 				{
 					menuItems && menuItems?.map((menuItem, index) => (
-						<NavbarItem as={Link} className="group/menu-item flex flex-col" href={menuItem?.href} color={menuItem?.color ?? "foreground"}>
+						<NavbarItem as={Link} key={index} className="group/menu-item flex flex-col" href={menuItem?.href} color={menuItem?.color ?? "foreground"}>
 							{ menuItem?.title }
 							<span class="block opacity-0 w-0 group-hover/menu-item:w-full group-hover/menu-item:opacity-100 transition-all duration-500 h-0.5 bg-pp-accent-1 dark:bg-pp-accent-dark-1"></span>
 						</NavbarItem>
