@@ -195,7 +195,7 @@ export default function PPNavbar({session}) {
 					<PPModal
 						customTrigger={
 							<Tooltip content="or Sign Up" closeDelay={20} offset={-7}>
-								<Button radius="full" className="bg-gradient-to-r from-violet-600 to-indigo-600 text-white shadow-lg font-bold">
+								<Button radius="full" className="bg-gradient-to-r from-pp-primary to-pp-secondary text-white shadow-lg font-bold">
 									LOGIN
 								</Button>
 							</Tooltip>
