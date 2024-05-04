@@ -11,7 +11,7 @@ import { getMediaOriginalUrl } from "@/utils/helpers/mediaHelper";
 
 const Home = async () => {
 
-	const HeadingOne = explodeWords("Divorce Done, Deals On! Ken's Resells Await - Dive In Now!")
+	const HeadingOne = explodeWords(`Divorce Done, Deals On! Ken's Resells Await - Dive In Now!`)
 	const homeBannerImagesFolderResponse = await customServerFetchWithoutAuth('/api/folders/by_name/home_banner_images', 'GET');
 	const homeBannerImagesFolder = await homeBannerImagesFolderResponse.json();
 	const bannerMedias = homeBannerImagesFolder?.medias ?? []
@@ -23,22 +23,22 @@ const Home = async () => {
     return (
 		<div className="w-100 pointer-events-none mb-10">
 			<PPSectionBlock className={'h-[80svh]'}>
-				<div className="w-full h-full flex p-8 lg:p-16 lg:flex-row gap-y-10 lg:gap-x-28 lg:gap-y-0">
-					<div className="px-10 rounded-3xl w-full lg:w-3/5 h-full flex flex-col gap-y-10 justify-center items-center ">
+				<div className="w-full h-full flex flex-col p-8 lg:p-16 lg:flex-row gap-y-10 lg:gap-x-28 lg:gap-y-0">
+					<div className="px-10 rounded-3xl w-full lg:w-3/5 h-full flex flex-col gap-y-5 lg:gap-y-10 justify-center items-center ">
 						<div className="w-full flex flex-col">
 							<TypewriterEffect words={HeadingOne}/>
 						</div>
 						<Button
-							className="pointer-events-auto bg-gradient-to-r from-pp-primary to-pp-secondary text-white w-64 h-16 text-2xl font-extrabold flex items-center"
+							className="pointer-events-auto bg-gradient-to-r from-pp-primary to-pp-secondary text-white w-36 h-12 lg:w-64 lg:h-16 text-sm lg:text-2xl font-extrabold flex items-center"
 							size="lg"
 							variant="shadow"
 						>
-							Shop Now <IconChevronRight size={20}/>
+							Shop Now <IconChevronRight className="hidden lg:flex" size={20}/> <IconChevronRight className="flex lg:hidden" size={15}/>
 						</Button>
 					</div>
-					<div className=" rounded-3xl w-full lg:w-2/5 h-full flex flex-col gap-y-3 justify-center items-center ">
+					<div className="rounded-3xl w-full lg:w-2/5 h-full flex flex-col gap-y-3 justify-center items-center ">
 						<div className="w-full h-full relative">
-							<div className="w-72 shadow-lg absolute top-4 left-4 p-2 z-0 bg-gradient-to-r from-pp-primary to-pp-secondary rounded-lg">
+							<div className="w-36 lg:w-72 shadow-lg absolute top-4 left-4 p-2 z-0 bg-gradient-to-r from-pp-primary to-pp-secondary rounded-lg">
 								<PPImage
 									alt="broken-heart"
 									className="object-cover"
@@ -47,7 +47,7 @@ const Home = async () => {
 
 								/>
 							</div>
-							<div className="w-72 absolute shadow-lg bottom-4 right-4 p-2 z-0 bg-gradient-to-r from-pp-primary to-pp-secondary rounded-lg">
+							<div className="w-36 lg:w-72 absolute shadow-lg bottom-4 right-4 p-2 z-0 bg-gradient-to-r from-pp-primary to-pp-secondary rounded-lg">
 								<PPImage
 									alt="broken-heart"
 									className="object-cover rounded-lg"
@@ -57,7 +57,7 @@ const Home = async () => {
 							</div>
 							<PPImage
 								alt="broken-heart"
-								className="object-cover w-20"
+								className="object-cover w-12 lg:w-20"
 								src={brokenHeartImg}
 								loading='lazy'
 								wrapperClassName="absolute top-0 flex justify-center items-center z-1"
@@ -66,10 +66,10 @@ const Home = async () => {
 					</div>
 				</div>
 			</PPSectionBlock>
-			<PPSectionBlock className={'h-[20svh] flex justify-center items-center'}>
-				<div className="w-11/12 px-10 rounded-[8px] backdrop-blur-sm text-center text-xl font-bold flex items-center bg-pp-home-intro/70 dark:bg-pp-home-intro-dark/70 h-full">
+			<PPSectionBlock className={'h-fit lg:h-[20svh] flex justify-center items-center'}>
+				<div className="w-11/12 px-10 py-6 lg:py-0 rounded-[8px] backdrop-blur-sm text-center text-xl font-bold flex items-center bg-pp-home-intro/70 dark:bg-pp-home-intro-dark/70 h-full">
 					Welcome to our resale haven, where treasures find new owners and stories continue to unfold! 
-					Dive into our diverse selection of pre-loved goods, where you might just stumble upon Ken's collectible waiting to be rediscovered. 
+					Dive into our diverse selection of pre-loved goods, where you might just stumble upon Ken&apos;s collectible waiting to be rediscovered. 
 					From vintage finds to modern marvels, our platform offers something for everyone.Let the adventure begin!
 				</div>
 			</PPSectionBlock>

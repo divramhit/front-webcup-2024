@@ -256,7 +256,7 @@ export default function PPNavbar({session}) {
 			<NavbarMenu className="bg-pp-primary/50 dark:bg-pp-primary-dark/50 backdrop-blur-2xl items-end px-0">
 				{mobileMenuItems.map((item, index) => (
 					item?.isDropdown ? (
-						<div key={index} className={`w-full ${index == mobileMenuItems?.length - 1 ? '' : ' border-b-1'}`}>
+						<div key={index} className={`w-full ${index == mobileMenuItems?.length - 1 ? '' : ' border-b-1 border-black dark:border-white'}`}>
 							<Accordion>
 								<AccordionItem
 									key={index} 
