@@ -1,6 +1,8 @@
 import { Inter } from "next/font/google";
 import '../app/globals.css';
 import { Providers } from "./providers";
+import RootLoading from "./loading";
+import { Suspense } from "react";
 import { Toaster } from 'sonner';
 
 const inter = Inter({ subsets: ["latin"] });
@@ -52,13 +54,15 @@ export const viewport = {
 export default function RootLayout({ children }) {
     return (
         <html>
-            <body>  
-                <div className={`${inter.className} main-app`}>
-					<Providers>
-						{children}
-                        <Toaster/>
-					</Providers>
-				</div>
+            <body> 
+                <Suspense fallback={<RootLoading/>}>
+                    <div className={`${inter.className} main-app`}>
+                        <Providers>
+                            {children}
+                            <Toaster/>
+                        </Providers>
+                    </div>
+                </Suspense>
             </body>
         </html>
         

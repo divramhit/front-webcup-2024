@@ -15,7 +15,11 @@ export default async function MainLayout({ children }) {
 				<HeroHighlight className={`max-h-full`}>
 				</HeroHighlight>
 			</PPSectionBlock>
-			{children}
+			<Suspense fallback={<MainLoading/>}>
+				<Transition>
+					{children}
+				</Transition>
+			</Suspense>
 			<PPFooter />
 		</div>
     );
