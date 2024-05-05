@@ -102,7 +102,7 @@ export const Header = () => {
         Items From <br /> <Highlight>The Dreamhouse</Highlight>
       </h1>
       <p className="max-w-2xl text-base md:text-xl mt-8 dark:text-neutral-200">
-        Find my carefully curated 
+        Find Ken&apos;s exclusive items in our boutique. Shop now to match yoir favorite celebrity and help him move out of the dreamhouse.
       </p>
     </div>
   );
