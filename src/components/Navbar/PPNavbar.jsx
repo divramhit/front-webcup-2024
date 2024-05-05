@@ -24,6 +24,7 @@ import {
 import {Accordion, AccordionItem} from "@nextui-org/accordion";
 import ThemeSelector from "../theme/ThemeSelector";
 import PPModal from "../PPModal/PPModal";
+import PPImage from "../PPImage/PPImage";
 import { SignupFormDemo } from "../aceternity-ui/SignupFormDemo";
 import { LoginForm } from "../pp-ui/LoginForm";
 import { logout } from "@/actions/actions";
@@ -36,7 +37,6 @@ export default function PPNavbar({session}) {
 	const [hasScrolled, setHasScrolled] = useState(false);
 	const {theme} = useTheme();
 	const params= useSearchParams();
-	console.log(params);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -144,17 +144,19 @@ export default function PPNavbar({session}) {
 		},
 	]
 
+
+
   	return (
 		<Navbar onMenuOpenChange={setIsMenuOpen} className={`group/navbar transition bg-transparent backdrop-blur-none ${ hasScrolled ? 'backdrop-blur-xl bg-pp-primary/30 dark:bg-pp-primary-dark/50' : '' } hover:bg-pp-primary/30 dark:hover:bg-pp-primary-dark/50 hover:backdrop-blur-xl`}>
 			<NavbarContent justify="end">
 				<NavbarBrand as={Link} color="foreground" href={'/'} className="h-full flex justify-center ml-10 lg:ml-0 lg:justify-start gap-x-2">
 					<div className="h-full p-2.5">
-						<img className='h-full object-fill rounded-full border-1 aspect-square' loading='lazy' src={`${process.env.NEXT_PUBLIC_APP_URL}/images/logo.png`} alt="puddle pirates logo"/>
+						<PPImage className='h-full object-fill rounded-full bg-black dark:bg-white aspect-square' loading='lazy' src={`https://puddlepirates.latchoomun.com/media/cache/original/logo-6636b0dad383b901868666.png`} alt="puddle pirates logo"/>
 					</div>
 					<p className="font-bold text-inherit hidden sm:flex">PuddlePirates</p>
 				</NavbarBrand>
 				<a href="https://bff.ecoindex.fr/redirect/?url=https://puddlepirates.maurice.webcup.hodi.host" target="_blank">
-					<img src={`https://bff.ecoindex.fr/badge/?theme=${theme}&url=https://puddlepirates.maurice.webcup.hodi.host`} alt="Ecoindex Badge" />
+					<PPImage src={`https://bff.ecoindex.fr/badge/?theme=${theme}&url=https://puddlepirates.maurice.webcup.hodi.host`} alt="Ecoindex Badge" />
 				</a>
 			</NavbarContent>
 

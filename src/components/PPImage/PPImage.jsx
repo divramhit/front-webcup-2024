@@ -11,9 +11,6 @@ const PPImage = ({ wrapperClassName = '', ...imgProps }) => {
     const imgRef = useRef();
 
     useEffect(() => {
-        console.log("Is Image Loading:", isImageLoading);
-        console.log("Image Loaded:", imgProps?.src);
-
         // If the image is cached, the onLoad event won't trigger
         imgRef.current.src = imgProps?.src;
         if (imgRef.current.complete) {
