@@ -2,7 +2,7 @@
 import { customServerFetchWithoutAuth } from "@/lib/api";
 
 
-export async function contactUs(formData) {
+export async function contactUs(prevState, formData) {
     const fullname = formData.get("fullname");
     const email = formData.get("email");
     const password = formData.get("message");
