@@ -151,7 +151,7 @@ export default function PPNavbar({session}) {
 			<NavbarContent justify="end">
 				<NavbarBrand as={Link} color="foreground" href={'/'} className="h-full flex justify-center ml-10 lg:ml-0 lg:justify-start gap-x-2">
 					<div className="h-full p-2.5">
-						<PPImage className='h-full object-fill rounded-full bg-black dark:bg-white aspect-square' loading='lazy' src={`https://puddlepirates.latchoomun.com/media/cache/original/logo-6636b0dad383b901868666.png`} alt="puddle pirates logo"/>
+						<PPImage className='h-full object-fill rounded-full bg-black dark:bg-white aspect-square' loading='lazy' src={`https://puddlepirates.latchoomun.com/media/cache/original/logo-6636e518cd599055357925.png`} alt="puddle pirates logo"/>
 					</div>
 					<p className="font-bold text-inherit hidden sm:flex">PuddlePirates</p>
 				</NavbarBrand>
@@ -226,8 +226,10 @@ export default function PPNavbar({session}) {
 				}
 			</NavbarContent>
 			
-			<NavbarItem as={Link} href="/cart" radius="full" className="bg-transparent hidden lg:flex" isIconOnly>
-				<IconShoppingCart/>
+			<NavbarItem as={Link} href="/cart" radius="full" className="hidden lg:flex" isIconOnly>
+				<Button className="bg-transparent " radius="full" isIconOnly>
+					<IconShoppingCart/>
+				</Button>
 			</NavbarItem>
 			<NavbarItem>
 				<ThemeSelector />
