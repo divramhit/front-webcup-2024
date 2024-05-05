@@ -87,6 +87,10 @@ export default function PPNavbar({session, categories}) {
 			dropdownItems: newCategories
 		},
 		{
+			href: '/products',
+			tittle: 'All Products'
+		},
+		{
 			href: '/about-us',
 			title: 'About Us'
 		},
