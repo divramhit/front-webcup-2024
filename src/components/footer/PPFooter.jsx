@@ -7,7 +7,6 @@ export default function PPFooter() {
             <footer>
                 <PPSectionBlock className={"h-[20vh]"}>
                     Footer
-                    <ContactUsForm />
                 </PPSectionBlock> 
             </footer>   
         </>

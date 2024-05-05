@@ -9,7 +9,6 @@ import {
 	NavbarMenuToggle, 
 	NavbarMenu, 
 	NavbarMenuItem, 
-	Button,
 	Tooltip,
 	Dropdown,
 	DropdownMenu,
@@ -21,6 +20,7 @@ import {
 	Tabs,
 	Tab
 } from "@nextui-org/react";
+import {Button} from "@nextui-org/button";
 import {Accordion, AccordionItem} from "@nextui-org/accordion";
 import ThemeSelector from "../theme/ThemeSelector";
 import PPModal from "../PPModal/PPModal";
@@ -31,6 +31,7 @@ import { logout } from "@/actions/actions";
 import { IconChevronDown, IconShoppingCart } from "@tabler/icons-react";
 import { useTheme } from "next-themes";
 import { useSearchParams } from "next/navigation";
+import { ContactUsForm } from "../pp-ui/ContactUsForm";
 
 export default function PPNavbar({session}) {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -77,10 +78,6 @@ export default function PPNavbar({session}) {
 		{
 			href: '/about-us',
 			title: 'About Us',
-		},
-		{
-			href: '/contact-us',
-			title: 'Contact Us',
 		}
 	]
 
@@ -115,13 +112,6 @@ export default function PPNavbar({session}) {
 		{
 			href: '/cart',
 			title: 'Cart'
-		},
-		{
-			href: '#',
-			title: 'Logout',
-			color: 'danger',
-			onAction: logout,
-			isHidden: session?.authenticated ? false : true
 		}
 	];
 
@@ -194,6 +184,22 @@ export default function PPNavbar({session}) {
 
 					})
 				}
+
+				<PPModal
+					customTrigger={
+							<Button disableRipple radius="full" className="group/menu-item flex flex-col p-0 h-fit justify-center text-md bg-transparent">
+								<span className="-mb-2">Contact Us</span>
+								<span className="block opacity-0 w-0 group-hover/menu-item:w-full group-hover/menu-item:opacity-100 transition-all duration-500 h-0.5 bg-pp-accent-1 dark:bg-pp-accent-dark-1"></span>
+							</Button>
+					}
+				>
+					<ModalBody>
+						<div className="w-full h-full flex items-center">
+							<ContactUsForm/>
+						</div>
+					</ModalBody>
+				</PPModal>
+
 				{
 					session?.authenticated ? <></> :
 					<PPModal manualOpen={params.get('login') ? params.get("login") === "true" : false} 
@@ -244,12 +250,12 @@ export default function PPNavbar({session}) {
 								src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
 							/>
 						</DropdownTrigger>
-						<DropdownMenu aria-label="Profile Actions" variant="flat">
+						<DropdownMenu aria-label="Profile Actions" variant="flat" onAction={(key) => { if (key == "logout") logout(); }}>
 							<DropdownItem key="profile" className="h-14 gap-2">
 								<p className="font-semibold">Signed in as</p>
 								<p className="font-semibold">{session?.user?.email}</p>
 							</DropdownItem>
-							<DropdownItem key="logout" onAction={logout} color="danger">
+							<DropdownItem key="logout" color="danger">
 								Log Out
 							</DropdownItem>
 						</DropdownMenu>
@@ -301,9 +307,15 @@ export default function PPNavbar({session}) {
 						</NavbarMenuItem>
 					)
 				))}
-				<div className="pt-10 w-full flex justify-center">
+				<div className="pt-10 w-full gap-x-5 flex justify-center">
 					{
-						session?.authenticated ? <></> :
+						session?.authenticated ? <>
+							<form action={logout}>
+								<Button type="submit" radius="full" className="transition bg-pp-accent-1 text-2xl p-8 text-white shadow-lg font-bold">
+									LOGOUT
+								</Button>
+							</form>
+						</> :
 						<PPModal manualOpen={params.get('login') ? params.get("login") === "true" : false} 
 							customTrigger={
 								<Tooltip content="or Sign Up" closeDelay={20} offset={-7}>
@@ -326,6 +338,20 @@ export default function PPNavbar({session}) {
 							</ModalBody>
 						</PPModal>
 					}
+
+					<PPModal
+						customTrigger={
+							<Button radius="full" className="transition bg-pp-primary text-2xl p-8 hover:bg-pp-accent-1 text-white shadow-lg font-bold">
+								<span>CONTACT US</span>
+							</Button>
+						}
+					>
+						<ModalBody>
+							<div className="w-full h-full flex items-center">
+								<ContactUsForm/>
+							</div>
+						</ModalBody>
+					</PPModal>
 				</div>
 			</NavbarMenu>
 			<NavbarMenuToggle
