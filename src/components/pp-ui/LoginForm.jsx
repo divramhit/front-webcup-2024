@@ -40,7 +40,7 @@ export function LoginForm() {
 					className="transition bg-pp-primary hover:bg-pp-accent-1 text-white shadow-lg font-bold rounded w-full p-2"
 					type="submit" onClick={() => {setLoading(true)}}
 				>
-					{loading ? <Spinner /> : <></>}
+					{loading ? <Spinner size="sm"/> : <></>}
 					Login &rarr;
 				</button>
 				<p>{state?.error ? <>{state?.error}</> : <></>}</p>

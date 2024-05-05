@@ -64,15 +64,19 @@ export default function PPNavbar({session, categories}) {
 
 	const menuItems = [
 		{
-			href: '/products',
+			href: '/category',
 			title: 'Shop',
 			dropdownItems: newCategories,
 			isDropdown: true
 		},
 		{
+			href: '/products',
+			title: 'All Products',
+		},
+		{
 			href: '/about-us',
-			title: 'About Us',
-		}
+			title: 'About Ken',
+		},
 	]
 
 	const mobileMenuItems = [
@@ -88,11 +92,11 @@ export default function PPNavbar({session, categories}) {
 		},
 		{
 			href: '/products',
-			tittle: 'All Products'
+			title: 'All Products'
 		},
 		{
 			href: '/about-us',
-			title: 'About Us'
+			title: 'About Ken'
 		},
 		{
 			href: '/cart',
