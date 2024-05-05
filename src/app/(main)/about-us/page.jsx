@@ -1,6 +1,8 @@
+
 import { StickyScrollReveal } from "@/components/aceternity-ui/StickyScrollReveal";
 import PPSectionBlock from "@/components/PPSectionBlock/PPSectionBlock";
 import { customServerFetchWithoutAuth } from "@/lib/api";
+import PPImage from "@/components/PPImage/PPImage";
 
 
 async function getAboutUsImages () {
@@ -75,12 +77,27 @@ export default async function AboutUs() {
         },
     ];
     return (
-        <>
+        <div className="pointer-events-none">
           <PPSectionBlock>
-          <div className="p-10">
-            <StickyScrollReveal content={content} images={images} />
+            <div className="w-full h-full flex">
+              <div className="w-3/5 full flex justify-center items-center flex-col text-center px-20">
+                <div className="w-full justify-center text-center text-3xl mb-5 font-bold">About Ken</div>
+                Welcome to Ken&apos;s Boutique, where every product tells a story of resilience, reinvention, and newfound independence. Formerly part of the iconic duo, Ken has embarked on a journey of self-discovery post-divorce with Barbie. Here, you&apos;ll find a curated collection of items that reflect Ken&apos;s unique taste and style, each chosen with care to bring joy and inspiration to our customers. From timeless classics to modern marvels, every piece carries a piece of Ken&apos;s journey, inviting you to embark on your own adventure of discovery. Step into Ken&apos;s world and rediscover the beauty of individuality at Ken&apos;s Boutique.
+              </div>
+              <div className="w-2/5 h-full flex justify-center items-center p-20">
+                <PPImage
+                  src={`https://puddlepirates.latchoomun.com/media/cache/original/ken-663724f03898d029049491.jpg`}
+                  className="rounded-xl"
+                  wrapperClassName="flex justify-center items-center"
+                />
+              </div>
             </div>
           </PPSectionBlock>
-        </>
+          <PPSectionBlock className="pointer-events-auto">
+            <div className="p-10">
+              <StickyScrollReveal content={content} images={images} />
+            </div>
+          </PPSectionBlock>
+        </div>
     )
 }
