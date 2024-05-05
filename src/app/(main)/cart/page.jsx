@@ -5,6 +5,7 @@ import {columns} from "@/data/cart";
 import { PPDeleteIcon } from "@/components/icons/PPDeleteIcon";
 import { customClientFetch } from "@/lib/api";
 import { Button } from "@nextui-org/react";
+import Link from "next/link";
 
 const statusColorMap = {
   active: "success",
@@ -51,7 +52,6 @@ export default function CartPage() {
                 description={user.email}
                 name={cellValue}
             >
-                {user.email}
             </User>
             );
         case "role":
@@ -106,6 +106,9 @@ export default function CartPage() {
                 <Button variant="primary">Proceed to checkout</Button>
             </TableFooter>
         </Table>
+        <Link href="/checkout">
+            <Button color="primary" href="/checkout">Proceed to checkout</Button>
+        </Link>
         </>
     );
 }

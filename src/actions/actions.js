@@ -15,11 +15,19 @@ export const getSession = async () => {
     return session
 }
 
-export const login = async (formData) => {
+export const login = async (prevState, formData) => {
     const session = await getSession();
 
     const email = formData.get("email");
     const password = formData.get("password");
+
+    if (!email || email === "") {
+        return {error: "Email cannot be empty"}
+    }
+
+    if (!password || password === "") {
+        return {error: "Password cannot be empty"}
+    }
 
     const payload = {
         email: email,
@@ -36,7 +44,7 @@ export const login = async (formData) => {
     })
 
     if (loginResponse.status == 401) {
-        return await loginResponse.json();
+        return {error: "Unauthorized"}
     }
 
     const user = await loginResponse.json();
