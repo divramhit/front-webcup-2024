@@ -31,6 +31,7 @@ import { logout } from "@/actions/actions";
 import { IconChevronDown, IconShoppingCart } from "@tabler/icons-react";
 import { useTheme } from "next-themes";
 import { useSearchParams } from "next/navigation";
+import { ContactUsForm } from "../pp-ui/ContactUsForm";
 
 export default function PPNavbar({session}) {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -77,10 +78,6 @@ export default function PPNavbar({session}) {
 		{
 			href: '/about-us',
 			title: 'About Us',
-		},
-		{
-			href: '/contact-us',
-			title: 'Contact Us',
 		}
 	]
 
@@ -194,6 +191,22 @@ export default function PPNavbar({session}) {
 
 					})
 				}
+
+				<PPModal
+					customTrigger={
+							<Button disableRipple radius="full" className="group/menu-item flex flex-col p-0 h-fit justify-center text-md bg-transparent">
+								<span className="-mb-2">Contact Us</span>
+								<span className="block opacity-0 w-0 group-hover/menu-item:w-full group-hover/menu-item:opacity-100 transition-all duration-500 h-0.5 bg-pp-accent-1 dark:bg-pp-accent-dark-1"></span>
+							</Button>
+					}
+				>
+					<ModalBody>
+						<div className="w-full h-full flex items-center">
+							<ContactUsForm/>
+						</div>
+					</ModalBody>
+				</PPModal>
+
 				{
 					session?.authenticated ? <></> :
 					<PPModal manualOpen={params.get('login') ? params.get("login") === "true" : false} 
@@ -301,7 +314,7 @@ export default function PPNavbar({session}) {
 						</NavbarMenuItem>
 					)
 				))}
-				<div className="pt-10 w-full flex justify-center">
+				<div className="pt-10 w-full gap-x-5 flex justify-center">
 					{
 						session?.authenticated ? <></> :
 						<PPModal manualOpen={params.get('login') ? params.get("login") === "true" : false} 
@@ -326,6 +339,20 @@ export default function PPNavbar({session}) {
 							</ModalBody>
 						</PPModal>
 					}
+
+					<PPModal
+						customTrigger={
+							<Button radius="full" className="transition bg-pp-primary text-2xl p-8 hover:bg-pp-accent-1 text-white shadow-lg font-bold">
+								<span>CONTACT US</span>
+							</Button>
+						}
+					>
+						<ModalBody>
+							<div className="w-full h-full flex items-center">
+								<ContactUsForm/>
+							</div>
+						</ModalBody>
+					</PPModal>
 				</div>
 			</NavbarMenu>
 			<NavbarMenuToggle
