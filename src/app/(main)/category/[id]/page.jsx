@@ -6,6 +6,7 @@ import {Popover, PopoverTrigger, PopoverContent} from "@nextui-org/popover";
 import {Button} from "@nextui-org/button";
 import { IconEye } from "@tabler/icons-react";
 import PP_ProductCard from "@/components/product/PP_ProductCard";
+import PPImage from "@/components/PPImage/PPImage";
 
 export default function ShopByCategory ({params}) {
     const categoryId = params?.id;
@@ -19,13 +20,12 @@ export default function ShopByCategory ({params}) {
     }, [categoryId])
 
     return (
-        <PPSectionBlock>
-            {/* {JSON.stringify(categoryData)} */}
+        <PPSectionBlock className={'min-h-svh h-fit overflow-x-auto'}>
             <div 
                 style={{
                     position: "relative",
-                    width: "fit-content",
                 }}
+                className="w-[1500px] h-svh lg:w-full lg:h-full"
             >
             {
                 categoryData?.products && 
@@ -41,10 +41,12 @@ export default function ShopByCategory ({params}) {
                                 <Button 
                                     key={product.id} 
                                     style={{...product?.shopCss, border: '0px solid white !important', color: 'white'}}
-                                    className=" bg-pp-secondary/80 backdrop-blur-sm dark:bg-pp-secondary/70 border-0 shadow-lg"
+                                    className=" bg-pp-secondary/80 backdrop-blur-sm dark:bg-pp-secondary/70 border-0 shadow-lg relative overflow-visible"
                                     radius="full"
                                     isIconOnly
                                 >
+                                    <span class="animate-ping absolute inline-flex top-0 right-0 h-3 w-3 rounded-full bg-sky-400 opacity-75"></span>
+                                    <span class="absolute inline-flex h-3 w-3 top-0 right-0 rounded-full bg-sky-400"></span>
                                     <IconEye/>
                                 </Button>
                             </PopoverTrigger>
@@ -56,7 +58,7 @@ export default function ShopByCategory ({params}) {
                     );
                 })
             }
-            <img height={1000} width={1000} src={categoryData?.shopImage?.media_original}/>
+            <PPImage className="w-full h-full lg:w-full" src={categoryData?.shopImage?.media_original}/>
             </div>
 
         </PPSectionBlock>
