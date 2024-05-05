@@ -7,7 +7,9 @@ import { cn } from "@/utils/cn";
 export const StickyScrollReveal = ({
   content,
   contentClassName,
+  images
 }) => {
+    console.log(images);
     const [activeCard, setActiveCard] = React.useState(0);
     const ref = useRef(null);
     const { scrollYProgress } = useScroll({
@@ -84,14 +86,16 @@ export const StickyScrollReveal = ({
         </div>
         <motion.div
             animate={{
-            backgroundImage: linearGradients[activeCard % linearGradients.length],
+            // backgroundImage: linearGradients[activeCard % linearGradients.length],
+            backgroundImage : `url(${images?.medias[activeCard]["media_original"]})`,
+            backgroundSize: '100% 100%'
             }}
             className={cn(
             "hidden lg:block h-60 w-80 rounded-md bg-white sticky top-10 overflow-hidden",
             contentClassName
             )}
         >
-            {content[activeCard].content ?? null}
+            {/* {content[activeCard].content ?? null} */}
         </motion.div>
         </motion.div>
     );
