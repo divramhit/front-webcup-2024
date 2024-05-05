@@ -33,11 +33,18 @@ import { useTheme } from "next-themes";
 import { useSearchParams } from "next/navigation";
 import { ContactUsForm } from "../pp-ui/ContactUsForm";
 
-export default function PPNavbar({session}) {
+export default function PPNavbar({session, categories}) {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [hasScrolled, setHasScrolled] = useState(false);
 	const {theme} = useTheme();
 	const params= useSearchParams();
+
+	let newCategories = categories.map(category => {
+		return {
+			href : `/category/${category?.id}`,
+			title : category?.name
+		}
+	})
 
     useEffect(() => {
         const handleScroll = () => {
@@ -59,20 +66,7 @@ export default function PPNavbar({session}) {
 		{
 			href: '/products',
 			title: 'Shop',
-			dropdownItems: [
-				{
-					href: '/products/1',
-					title: 'Bedroom'
-				},
-				{
-					href: '/products/2',
-					title: 'Kitchen'
-				},
-				{
-					href: '/products/3',
-					title: 'Garden'
-				}
-			],
+			dropdownItems: newCategories,
 			isDropdown: true
 		},
 		{
@@ -90,20 +84,7 @@ export default function PPNavbar({session}) {
 			href: '/products',
 			title: 'Shop',
 			isDropdown: true,
-			dropdownItems: [
-				{
-					href: '/products/1',
-					title: 'Bedroom'
-				},
-				{
-					href: '/products/2',
-					title: 'Kitchen'
-				},
-				{
-					href: '/products/3',
-					title: 'Garden'
-				}
-			]
+			dropdownItems: newCategories
 		},
 		{
 			href: '/about-us',
