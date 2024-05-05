@@ -4,6 +4,11 @@ import {Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, User, C
 import {columns, users} from "@/data/cart";
 import { PPDeleteIcon } from "@/components/icons/PPDeleteIcon";
 import { customClientFetch } from "@/lib/api";
+<<<<<<< Updated upstream
+=======
+import { Button } from "@nextui-org/react";
+import Link from "next/link";
+>>>>>>> Stashed changes
 
 const statusColorMap = {
   active: "success",
@@ -50,7 +55,6 @@ export default function CartPage() {
                 description={user.email}
                 name={cellValue}
             >
-                {user.email}
             </User>
             );
         case "role":
@@ -102,6 +106,9 @@ export default function CartPage() {
                 )}
             </TableBody>
         </Table>
+        <Link href="/checkout">
+            <Button color="primary" href="/checkout">Proceed to checkout</Button>
+        </Link>
         </>
     );
 }

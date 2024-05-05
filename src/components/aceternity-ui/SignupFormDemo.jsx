@@ -4,19 +4,36 @@ import { Input } from "../baseAceternityUi/input/input";
 import { Label } from "../baseAceternityUi/label/label";
 import { cn } from "@/utils/cn";
 import { signUp } from "@/services/user"
+<<<<<<< Updated upstream
 
 
 export function SignupFormDemo() {
+=======
+import { useState, useEffect } from "react";
+import { Spinner } from "@nextui-org/react";
+import {useFormState} from 'react-dom';
+
+
+export function SignupFormDemo() {
+	const [loading, setLoading] = useState(false);
+
+	const [state, formAction] = useFormState(signUp, undefined);
+
+	useEffect(() => {
+		setLoading(false);
+	}, [state])
+
+>>>>>>> Stashed changes
 	return (
 		<div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
 			<h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
-				Welcome to Puddle Pirates
+				Welcome to Ken&apos;s Boutique
 			</h2>
 			<p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
-				Sign up to become a duck.
+				Sign up to purchase ken&apos; products
 			</p>
 
-			<form className="my-8" action={signUp}>
+			<form className="my-8" action={formAction}>
 				<div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
 					<LabelInputContainer>
 						<Label htmlFor="fullname">Full name</Label>
@@ -38,7 +55,7 @@ export function SignupFormDemo() {
 					Sign up &rarr;
 					<BottomGradient />
 				</button>
-
+				<p>{state?.error ? <>{state?.error}</> : <></>}</p>
 				<div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full" />
 			</form>
 		</div>

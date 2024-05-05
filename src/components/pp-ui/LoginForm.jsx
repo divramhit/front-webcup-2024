@@ -4,6 +4,7 @@ import { Input } from "../baseAceternityUi/input/input";
 import { Label } from "../baseAceternityUi/label/label";
 import { cn } from "@/utils/cn";
 import { login } from "@/actions/actions";
+<<<<<<< Updated upstream
 
 export function LoginForm() {
 	return (
@@ -13,9 +14,31 @@ export function LoginForm() {
 			</h2>
 			<p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
 				Login to Puddle Pirates Hub
+=======
+import {Spinner} from "@nextui-org/react";
+import { useEffect, useState } from "react";
+import {useFormState} from 'react-dom';
+
+export function LoginForm() {
+	const [loading, setLoading] = useState(false);
+
+	const [state, formAction] = useFormState(login, undefined);
+
+	useEffect(() => {
+		setLoading(false);
+	}, [state])
+
+	return (
+		<div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
+			<h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
+				Welcome to Ken&apos;s Boutique
+			</h2>
+			<p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
+				Login to Ken&apos;s Boutique
+>>>>>>> Stashed changes
 			</p>
 
-			<form className="my-8" action={login}>
+			<form className="my-8" action={formAction}>
 				<LabelInputContainer className="mb-4">
 					<Label htmlFor="email">Email Address</Label>
 					<Input id="email" name="email" placeholder="projectmayhem@fc.com" type="email" />
@@ -32,6 +55,7 @@ export function LoginForm() {
 					Login &rarr;
 					<BottomGradient />
 				</button>
+				<p>{state?.error ? <>{state?.error}</> : <></>}</p>
 
 				<div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full" />
 			</form>
