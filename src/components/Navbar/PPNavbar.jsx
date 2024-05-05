@@ -86,14 +86,8 @@ export default function PPNavbar({session}) {
 
 	const mobileMenuItems = [
 		{
-			href: '/login',
-			title: 'Login',
-			isHidden: session?.authenticated ? true : false
-		},
-		{
-			href: '/sign-up',
-			title: 'Sign Up',
-			isHidden: session?.authenticated ? true : false
+			href: '/products',
+			title: 'All Products'
 		},
 		{
 			href: '/products',
@@ -119,8 +113,8 @@ export default function PPNavbar({session}) {
 			title: 'About Us'
 		},
 		{
-			href: '/contact-us',
-			title: 'Contact Us',
+			href: '/cart',
+			title: 'Cart'
 		},
 		{
 			href: '#',
@@ -151,9 +145,9 @@ export default function PPNavbar({session}) {
 			<NavbarContent justify="end">
 				<NavbarBrand as={Link} color="foreground" href={'/'} className="h-full flex justify-center ml-10 lg:ml-0 lg:justify-start gap-x-2">
 					<div className="h-full p-2.5">
-						<PPImage className='h-full object-fill rounded-full bg-black dark:bg-white aspect-square' loading='lazy' src={`https://puddlepirates.latchoomun.com/media/cache/original/logo-6636b0dad383b901868666.png`} alt="puddle pirates logo"/>
+						<PPImage className='h-full object-fill rounded-full bg-black dark:bg-white aspect-square' loading='lazy' src={`https://puddlepirates.latchoomun.com/media/cache/original/logo-6636e518cd599055357925.png`} alt="puddle pirates logo"/>
 					</div>
-					<p className="font-bold text-inherit hidden sm:flex">PuddlePirates</p>
+					<p className="font-bold text-inherit hidden sm:flex">Ken Store</p>
 				</NavbarBrand>
 				<a href="https://bff.ecoindex.fr/redirect/?url=https://puddlepirates.maurice.webcup.hodi.host" target="_blank">
 					<PPImage src={`https://bff.ecoindex.fr/badge/?theme=${theme}&url=https://puddlepirates.maurice.webcup.hodi.host`} alt="Ecoindex Badge" />
@@ -226,8 +220,10 @@ export default function PPNavbar({session}) {
 				}
 			</NavbarContent>
 			
-			<NavbarItem as={Link} href="/cart" radius="full" className="bg-transparent hidden lg:flex" isIconOnly>
-				<IconShoppingCart/>
+			<NavbarItem as={Link} href="/cart" radius="full" className="hidden lg:flex" isIconOnly>
+				<Button className="bg-transparent " radius="full" isIconOnly>
+					<IconShoppingCart/>
+				</Button>
 			</NavbarItem>
 			<NavbarItem>
 				<ThemeSelector />
@@ -305,7 +301,32 @@ export default function PPNavbar({session}) {
 						</NavbarMenuItem>
 					)
 				))}
-
+				<div className="pt-10 w-full flex justify-center">
+					{
+						session?.authenticated ? <></> :
+						<PPModal manualOpen={params.get('login') ? params.get("login") === "true" : false} 
+							customTrigger={
+								<Tooltip content="or Sign Up" closeDelay={20} offset={-7}>
+									<Button radius="full" className="transition bg-pp-primary text-2xl p-8 hover:bg-pp-accent-1 text-white shadow-lg font-bold">
+										LOGIN
+									</Button>
+								</Tooltip>
+							}
+						>
+							<ModalBody>
+								<Tabs color="secondary" aria-label="Login Tabs" radius="full">
+									{ 
+										LoginModalTabs && LoginModalTabs?.map((tabItem, index) => (
+											<Tab key={tabItem?.key} className="h-full flex items-center" title={tabItem?.title}>
+												{ tabItem?.content }
+											</Tab>
+										))
+									}
+								</Tabs>
+							</ModalBody>
+						</PPModal>
+					}
+				</div>
 			</NavbarMenu>
 			<NavbarMenuToggle
 				aria-label={isMenuOpen ? "Close menu" : "Open menu"}

@@ -114,6 +114,9 @@ export const ProductCard = ({
 }) => {
     return (
         <motion.div
+            style={{
+                x: translate,
+            }}
             key={product?.name}
             className=" pointer-events-auto group/product h-96 w-[30rem] relative flex-shrink-0"
         >
