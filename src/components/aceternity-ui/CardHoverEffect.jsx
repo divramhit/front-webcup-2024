@@ -1,6 +1,7 @@
 import { cn } from "@/utils/cn";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
+import PPImage from "../PPImage/PPImage";
 import { useState } from "react";
 
 export const CardHoverEffect = ({
@@ -8,7 +9,7 @@ export const CardHoverEffect = ({
   className,
 }) => {
   let [hoveredIndex, setHoveredIndex] = useState(null);
-
+  console.log("items", items);
   return (
     <div
       className={cn(
@@ -20,7 +21,7 @@ export const CardHoverEffect = ({
         <Link
           href={item?.link}
           key={item?.link}
-          className="relative group  block p-2 h-full w-full"
+          className="relative group  block p-2 h-full w-full aspect-video"
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
@@ -41,9 +42,18 @@ export const CardHoverEffect = ({
               />
             )}
           </AnimatePresence>
-          <Card>
-            <CardTitle>{item.title}</CardTitle>
-            <CardDescription>{item.description}</CardDescription>
+          <Card isFooterBlurred className={"group/product-card product-card w-full h-full col-span-12 sm:col-span-5 p-0"}>
+              <PPImage
+                  removeWrapper
+                  alt="Card example background"
+                  className="z-0 w-full h-full scale-125 -translate-y-6 object-cover"
+                  src={item?.shopImage?.media_original}
+              />
+              <div className="absolute bg-white/30 bottom-0 left-0 backdrop-blur-md h-20 border-t-1 border-zinc-100/50 z-10 flex w-full justify-between">
+                  <div className="w-full px-10 py-3">
+                      <h4 className="text-black font-medium text-3xl whitespace-nowrap text-ellipsis overflow-hidden ">{item?.name}</h4>
+                  </div>
+              </div>
           </Card>
         </Link>
       ))}
@@ -58,12 +68,12 @@ export const Card = ({
     return (
         <div
         className={cn(
-            "rounded-2xl h-full w-full p-4 overflow-hidden bg-black border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20",
+            "rounded-2xl h-full w-full overflow-hidden bg-black border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20",
             className
         )}
         >
-        <div className="relative z-50">
-            <div className="p-4">{children}</div>
+        <div className="relative h-full z-50">
+            <div className="">{children}</div>
         </div>
         </div>
     );

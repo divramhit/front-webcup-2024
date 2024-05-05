@@ -15,7 +15,8 @@ export default function Category() {
             categoriesData = categoriesData.map(category => {
                 return {
                     title: category.name,
-                    link: `/category/${category?.id}`
+                    link: `/category/${category?.id}`,
+                    ...category
                 }
             })
             setCategories(categoriesData);
