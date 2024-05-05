@@ -86,14 +86,8 @@ export default function PPNavbar({session}) {
 
 	const mobileMenuItems = [
 		{
-			href: '/login',
-			title: 'Login',
-			isHidden: session?.authenticated ? true : false
-		},
-		{
-			href: '/sign-up',
-			title: 'Sign Up',
-			isHidden: session?.authenticated ? true : false
+			href: '/products',
+			title: 'All Products'
 		},
 		{
 			href: '/products',
@@ -119,8 +113,8 @@ export default function PPNavbar({session}) {
 			title: 'About Us'
 		},
 		{
-			href: '/contact-us',
-			title: 'Contact Us',
+			href: '/cart',
+			title: 'Cart'
 		},
 		{
 			href: '#',
@@ -307,7 +301,32 @@ export default function PPNavbar({session}) {
 						</NavbarMenuItem>
 					)
 				))}
-
+				<div className="pt-10 w-full flex justify-center">
+					{
+						session?.authenticated ? <></> :
+						<PPModal manualOpen={params.get('login') ? params.get("login") === "true" : false} 
+							customTrigger={
+								<Tooltip content="or Sign Up" closeDelay={20} offset={-7}>
+									<Button radius="full" className="transition bg-pp-primary text-2xl p-8 hover:bg-pp-accent-1 text-white shadow-lg font-bold">
+										LOGIN
+									</Button>
+								</Tooltip>
+							}
+						>
+							<ModalBody>
+								<Tabs color="secondary" aria-label="Login Tabs" radius="full">
+									{ 
+										LoginModalTabs && LoginModalTabs?.map((tabItem, index) => (
+											<Tab key={tabItem?.key} className="h-full flex items-center" title={tabItem?.title}>
+												{ tabItem?.content }
+											</Tab>
+										))
+									}
+								</Tabs>
+							</ModalBody>
+						</PPModal>
+					}
+				</div>
 			</NavbarMenu>
 			<NavbarMenuToggle
 				aria-label={isMenuOpen ? "Close menu" : "Open menu"}
