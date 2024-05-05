@@ -4,28 +4,40 @@ import {Button} from "@nextui-org/button";
 import { IconShoppingCartPlus } from '@tabler/icons-react'
 import { customClientFetch } from '@/lib/api';
 import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
 
 const PP_ProductCardBtn = ({ productId = 0 }) => {
     const [isLoading, setIsLoading] = useState(false);
+    const router = useRouter();
 
     const addToCart = () => {
         setIsLoading(true);
         const addToCartPromise = customClientFetch(`/cart/add/${productId}`, "GET").then((response) => {
-            console.log(response);
+            if (response === null) {
+                toast.promise(addToCartPromise, {
+                    loading: 'Loading...',
+                    success: (data) => {
+                        return `Failed to add to cart`;
+                    },
+                    error: 'Error',
+                });
+            } else {
+                toast.promise(addToCartPromise, {
+                    loading: 'Loading...',
+                    success: (data) => {
+                        return `Successfully added to cart`;
+                    },
+                    error: 'Error',
+                });
+            }
+            
             setIsLoading(false);
         })
         .catch((e) => {
             setIsLoading(false)
         })
 
-        toast.promise(addToCartPromise, {
-            loading: 'Loading...',
-            success: (data) => {
-                console.log("data:", data)
-                return `Added to Cart`;
-            },
-            error: 'Error',
-        });
+
     }
 
     return (
