@@ -44,5 +44,5 @@ export const signUp = async (prevState, formData) => {
 
     const response = await signUpPromise.json();
 
-    redirect('/?login=true');
+    redirect('/login');
 }

@@ -17,7 +17,7 @@ const PP_ProductCardBtn = ({ productId = 0 }) => {
                 toast.promise(addToCartPromise, {
                     loading: 'Loading...',
                     success: (data) => {
-                        return `Failed to add to cart`;
+                        return `Failed to add to cart, Please Login and Try Again`;
                     },
                     error: 'Error',
                 });
