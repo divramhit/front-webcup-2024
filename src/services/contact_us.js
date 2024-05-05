@@ -2,10 +2,23 @@
 import { customServerFetchWithoutAuth } from "@/lib/api";
 
 
-export async function contactUs(formData) {
+export async function contactUs(prevState, formData) {
     const fullname = formData.get("fullname");
     const email = formData.get("email");
     const password = formData.get("message");
+
+    
+    if (!email || email === "") {
+        return {error: "Email cannot be empty"}
+    }
+
+    if (!password || password === "") {
+        return {error: "Password cannot be empty"}
+    }
+
+    if (!fullname || fullname === "") {
+        return {error: "Fullname cannot be empty"}
+    }
 
     const payload = {
         fullname : fullname,

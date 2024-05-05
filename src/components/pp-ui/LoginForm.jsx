@@ -24,8 +24,6 @@ export function LoginForm() {
 			</h2>
 			<p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
 				Login to Ken&apos;s Boutique
-
-				Login to Ken&apos;s Boutique
 			</p>
 
 			<form className="my-8" action={formAction}>
@@ -39,16 +37,14 @@ export function LoginForm() {
 				</LabelInputContainer>
 
 				<button
-					className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
+					className="transition bg-pp-primary hover:bg-pp-accent-1 text-white shadow-lg font-bold rounded w-full p-2"
 					type="submit" onClick={() => {setLoading(true)}}
 				>
 					{loading ? <Spinner /> : <></>}
 					Login &rarr;
-					<BottomGradient />
 				</button>
 				<p>{state?.error ? <>{state?.error}</> : <></>}</p>
 
-				<div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full" />
 			</form>
 		</div>
 	);

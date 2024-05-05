@@ -86,7 +86,6 @@ export default function CartPage() {
 
   return (
     <>
-    {JSON.stringify(cartItems)}
         <Table aria-label="Example table with custom cells">
             <TableHeader columns={columns}>
                 {(column) => (
@@ -102,9 +101,6 @@ export default function CartPage() {
                 </TableRow>
                 )}
             </TableBody>
-            <TableFooter>
-                <Button variant="primary">Proceed to checkout</Button>
-            </TableFooter>
         </Table>
         <Link href="/checkout">
             <Button color="primary" href="/checkout">Proceed to checkout</Button>
