@@ -17,7 +17,7 @@ export default async function Products() {
     return (
         <div className="pointer-events-none">
             <HeroParallax products={products}/>
-            <div className="relative w-full px-20 mb-10">
+            <div className="relative w-full text-center px-20 xl:mt-20 xl:mb-5 3xl:mt-0 3xl:mb-10">
                 <h2 className="text-3xl font-bold">All Products</h2>
             </div>
             

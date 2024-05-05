@@ -41,7 +41,7 @@ const Home = async () => {
 					</div>
 					<div className="rounded-3xl w-full lg:w-2/5 h-full flex flex-col gap-y-3 justify-center items-center ">
 						<div className="w-full h-full relative">
-							<div className="w-36 lg:w-72 shadow-lg absolute top-4 left-4 p-2 z-0 bg-gradient-to-r from-pp-primary to-pp-secondary rounded-lg">
+							<div className="w-36 xl:w-56 3xl:w-72 shadow-lg absolute top-4 left-4 p-2 z-0 bg-gradient-to-r from-pp-primary to-pp-secondary rounded-lg">
 								<PPImage
 									alt="broken-heart"
 									className="object-cover rotate-12"
@@ -50,7 +50,7 @@ const Home = async () => {
 
 								/>
 							</div>
-							<div className="w-36 lg:w-72 absolute shadow-lg bottom-4 right-4 p-2 z-0 bg-gradient-to-r from-pp-primary to-pp-secondary rounded-lg">
+							<div className="w-36 xl:w-56 3xl:w-72 absolute shadow-lg bottom-4 right-4 p-2 z-0 bg-gradient-to-r from-pp-primary to-pp-secondary rounded-lg">
 								<PPImage
 									alt="broken-heart"
 									className="object-cover rounded-lg rotate-[-12deg]"
@@ -64,7 +64,7 @@ const Home = async () => {
 									className="object-cover animate-bounce mt-6"
 									src={brokenHeartImg}
 									loading='lazy'
-									wrapperClassName="w-16 h-16 rotate-[-12deg] lg:w-32 lg:h-32"
+									wrapperClassName="w-16 h-16 rotate-[-12deg] xl:w-28 xl:h-28 3xl:w-32 3xl:h-32"
 								/>
 							</div>
 						</div>
