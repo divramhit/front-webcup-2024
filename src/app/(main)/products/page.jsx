@@ -14,7 +14,6 @@ export default async function Products() {
     }
 
     const products = await getAllProducts();
-    console.log(products);
     return (
         <div className="pointer-events-none">
             <HeroParallax products={products}/>
