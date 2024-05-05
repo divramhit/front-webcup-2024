@@ -8,6 +8,7 @@ import { IconChevronRight } from "@tabler/icons-react";
 import PPImage from "@/components/PPImage/PPImage";
 import { customServerFetchWithoutAuth } from "@/lib/api";
 import { getMediaOriginalUrl } from "@/utils/helpers/mediaHelper";
+import Link from "next/link";
 
 const Home = async () => {
 
@@ -28,13 +29,15 @@ const Home = async () => {
 						<div className="w-full flex flex-col">
 							<TypewriterEffect words={HeadingOne}/>
 						</div>
-						<Button
-							className="pointer-events-auto bg-gradient-to-r from-pp-primary to-pp-secondary text-white w-36 h-12 lg:w-64 lg:h-16 text-sm lg:text-2xl font-extrabold flex items-center"
-							size="lg"
-							variant="shadow"
-						>
-							Shop Now <IconChevronRight className="hidden lg:flex" size={20}/> <IconChevronRight className="flex lg:hidden" size={15}/>
-						</Button>
+						<Link href="/category">
+							<Button
+								className="pointer-events-auto bg-gradient-to-r from-pp-primary to-pp-secondary text-white w-36 h-12 lg:w-64 lg:h-16 text-sm lg:text-2xl font-extrabold flex items-center"
+								size="lg"
+								variant="shadow"
+							>
+								Shop Now <IconChevronRight className="hidden lg:flex" size={20}/> <IconChevronRight className="flex lg:hidden" size={15}/>
+							</Button>
+						</Link>
 					</div>
 					<div className="rounded-3xl w-full lg:w-2/5 h-full flex flex-col gap-y-3 justify-center items-center ">
 						<div className="w-full h-full relative">
