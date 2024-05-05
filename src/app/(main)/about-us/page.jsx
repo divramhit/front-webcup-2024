@@ -1,4 +1,5 @@
 import { StickyScrollReveal } from "@/components/aceternity-ui/StickyScrollReveal";
+import PPSectionBlock from "@/components/PPSectionBlock/PPSectionBlock";
 
 
 export default async function AboutUs() {
@@ -52,10 +53,11 @@ export default async function AboutUs() {
     ];
     return (
         <>
-            About us
-            <div className="p-10">
+          <PPSectionBlock>
+          <div className="p-10">
             <StickyScrollReveal content={content} />
             </div>
+          </PPSectionBlock>
         </>
     )
 }
