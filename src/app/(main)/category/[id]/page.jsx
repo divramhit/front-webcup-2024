@@ -41,7 +41,7 @@ export default function ShopByCategory ({params}) {
                                 <Button 
                                     key={product.id} 
                                     style={{...product?.shopCss, border: '0px solid white !important', color: 'white'}}
-                                    className=" bg-pp-primary/80 backdrop-blur-sm dark:bg-pp-primary/70 border-0 shadow-lg"
+                                    className=" bg-pp-secondary/80 backdrop-blur-sm dark:bg-pp-secondary/70 border-0 shadow-lg"
                                     radius="full"
                                     isIconOnly
                                 >
