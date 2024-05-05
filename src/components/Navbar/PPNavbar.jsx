@@ -64,15 +64,19 @@ export default function PPNavbar({session, categories}) {
 
 	const menuItems = [
 		{
-			href: '/products',
+			href: '/category',
 			title: 'Shop',
 			dropdownItems: newCategories,
 			isDropdown: true
 		},
 		{
+			href: '/products',
+			title: 'All Products',
+		},
+		{
 			href: '/about-us',
-			title: 'About Us',
-		}
+			title: 'About Ken',
+		},
 	]
 
 	const mobileMenuItems = [
@@ -87,8 +91,12 @@ export default function PPNavbar({session, categories}) {
 			dropdownItems: newCategories
 		},
 		{
+			href: '/products',
+			title: 'All Products'
+		},
+		{
 			href: '/about-us',
-			title: 'About Us'
+			title: 'About Ken'
 		},
 		{
 			href: '/cart',
@@ -118,7 +126,7 @@ export default function PPNavbar({session, categories}) {
 					<div className="h-full p-2.5">
 						<PPImage className='h-full object-fill rounded-full bg-black dark:bg-white aspect-square' loading='lazy' src={`https://puddlepirates.latchoomun.com/media/cache/original/logo-6636e518cd599055357925.png`} alt="puddle pirates logo"/>
 					</div>
-					<p className="font-bold text-inherit hidden sm:flex">Ken Store</p>
+					<p className="font-bold text-inherit hidden sm:flex">{process.env.NEXT_PUBLIC_APP_NAME}</p>
 				</NavbarBrand>
 				<a href="https://bff.ecoindex.fr/redirect/?url=https://puddlepirates.maurice.webcup.hodi.host" target="_blank">
 					<PPImage src={`https://bff.ecoindex.fr/badge/?theme=${theme}&url=https://puddlepirates.maurice.webcup.hodi.host`} alt="Ecoindex Badge" />

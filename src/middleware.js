@@ -25,7 +25,7 @@ export default async function middleware(req) {
         
     // 5. Redirect to /login if the user is not authenticated
     if (isProtectedRoute && !isAuthenticated) {
-        return NextResponse.redirect(new URL('/?login=true', req.nextUrl))
+        return NextResponse.redirect(new URL('/login', req.nextUrl))
     }
     
     // 6. Redirect to /dashboard if the user is authenticated

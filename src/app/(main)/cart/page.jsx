@@ -6,6 +6,7 @@ import { PPDeleteIcon } from "@/components/icons/PPDeleteIcon";
 import { customClientFetch } from "@/lib/api";
 import { Button } from "@nextui-org/react";
 import Link from "next/link";
+import PPSectionBlock from "@/components/PPSectionBlock/PPSectionBlock";
 
 const statusColorMap = {
   active: "success",
@@ -85,7 +86,7 @@ export default function CartPage() {
   });
 
   return (
-    <>
+    <PPSectionBlock>
         <Table aria-label="Example table with custom cells">
             <TableHeader columns={columns}>
                 {(column) => (
@@ -105,6 +106,6 @@ export default function CartPage() {
         <Link href="/checkout">
             <Button color="primary" href="/checkout">Proceed to checkout</Button>
         </Link>
-        </>
+        </PPSectionBlock>
     );
 }
