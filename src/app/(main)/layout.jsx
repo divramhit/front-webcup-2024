@@ -3,6 +3,9 @@ import { getSession } from "@/actions/actions";
 import PPSectionBlock from "@/components/PPSectionBlock/PPSectionBlock";
 import { HeroHighlight } from "@/components/baseAceternityUi/hero-highlight/hero-highlight";
 import PPFooter from "@/components/footer/PPFooter";
+import MainLoading from "./loading";
+import Transition from "@/components/PPTransition/PPTransition";
+import { Suspense } from "react";
 
 export default async function MainLayout({ children }) {
 	const session = await getSession();
@@ -13,7 +16,11 @@ export default async function MainLayout({ children }) {
 				<HeroHighlight className={`max-h-full`}>
 				</HeroHighlight>
 			</PPSectionBlock>
-			{children}
+			<Suspense fallback={<MainLoading/>}>
+				<Transition>
+					{children}
+				</Transition>
+			</Suspense>
 			<PPFooter />
 		</div>
     );
