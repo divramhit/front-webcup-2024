@@ -1,14 +1,11 @@
 'use client'
 import React, { useEffect, useState } from "react";
-import {Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, User, Chip, Tooltip, getKeyValue} from "@nextui-org/react";
-import {columns, users} from "@/data/cart";
+import {Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, User, Chip, Tooltip, TableFooter, getKeyValue} from "@nextui-org/react";
+import {columns} from "@/data/cart";
 import { PPDeleteIcon } from "@/components/icons/PPDeleteIcon";
 import { customClientFetch } from "@/lib/api";
-<<<<<<< Updated upstream
-=======
 import { Button } from "@nextui-org/react";
 import Link from "next/link";
->>>>>>> Stashed changes
 
 const statusColorMap = {
   active: "success",
@@ -105,6 +102,9 @@ export default function CartPage() {
                 </TableRow>
                 )}
             </TableBody>
+            <TableFooter>
+                <Button variant="primary">Proceed to checkout</Button>
+            </TableFooter>
         </Table>
         <Link href="/checkout">
             <Button color="primary" href="/checkout">Proceed to checkout</Button>
