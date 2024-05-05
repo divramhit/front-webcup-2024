@@ -56,5 +56,5 @@ export const login = async (formData) => {
 export const logout = async () => {
     const session = await getSession();
     session.destroy();
-    redirect("/login");
+    redirect("/");
 }

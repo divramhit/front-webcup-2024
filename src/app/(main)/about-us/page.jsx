@@ -1,22 +1,23 @@
 import { StickyScrollReveal } from "@/components/aceternity-ui/StickyScrollReveal";
+import PPSectionBlock from "@/components/PPSectionBlock/PPSectionBlock";
 
 
 export default async function AboutUs() {
     const content = [
         {
-          title: "Collaborative Editing",
+          title: "Welcome to Ken&apos;s Collection",
           description:
-            "Work together in real time with your team, clients, and stakeholders. Collaborate on documents, share ideas, and make decisions quickly. With our platform, you can streamline your workflow and increase productivity.",
+            "Discover a treasure trove of Ken&apos;s personal belongings, each item a piece of history from his iconic life post-divorce from Barbie. Known for his sophisticated taste and flair for interior design, Ken&apos;s collection features an assortment of household items that adorned the Dreamhouse. From elegant tableware to bespoke furniture, each piece tells the story of a style icon redefining his space and life.",
           content: (
             <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white">
-              Collaborative Editing
+              Welcome to Ken&apos;s Collection
             </div>
           ),
         },
         {
-          title: "Real time changes",
+          title: "Our Mission",
           description:
-            "See changes as they happen. With our platform, you can track every modification in real time. No more confusion about the latest version of your project. Say goodbye to the chaos of version control and embrace the simplicity of real-time updates.",
+            "We are dedicated to curating Ken&apos;s unique possessions, ensuring they find new homes where they can continue to be appreciated and loved. Our mission is to seamlessly transition these items from their glamorous past in the Dreamhouse to enriching modern-day homes, offering a blend of luxury, comfort, and a splash of celebrity history.",
           content: (
             <div className="h-full w-full  flex items-center justify-center text-white">
               <img
@@ -30,32 +31,43 @@ export default async function AboutUs() {
           ),
         },
         {
-          title: "Version control",
+          title: "Get to Know Ken",
           description:
-            "Experience real-time updates and never stress about version control again. Our platform ensures that you're always working on the most recent version of your project, eliminating the need for constant manual updates. Stay in the loop, keep your team aligned, and maintain the flow of your work without any interruptions.",
+            "Ken, a character forever linked to Barbie yet distinct in his own right, has always been a trendsetter. His home office, filled with items like vintage cameras and travel memorabilia, reflects his personal interests and cultured lifestyle. Now, as he ventures into a new chapter alone, his collection offers fans and new admirers alike the chance to own a part of his legacy.",
           content: (
             <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--orange-500),var(--yellow-500))] flex items-center justify-center text-white">
-              Version control
+              Get to Know Ken
             </div>
           ),
         },
         {
-          title: "Running out of content",
+          title: "Ken&apos;s Iconic Style",
           description:
-            "Experience real-time updates and never stress about version control again. Our platform ensures that you're always working on the most recent version of your project, eliminating the need for constant manual updates. Stay in the loop, keep your team aligned, and maintain the flow of your work without any interruptions.",
+            "Embrace the opportunity to incorporate Kens iconic style into your living spaces. Each item in our collection, from chic décor to art pieces, showcases Ken&apos;s ability to blend contemporary trends with timeless elegance. These pieces not only enhance your home but also carry the prestige of being part of the celebrated Dreamhouse.",
           content: (
             <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white">
-              Running out of content
+              Ken&apos;s Iconic Style
+            </div>
+          ),
+        },
+        {
+          title: "The Dreamhouse Redefined",
+          description:
+            "Through the items he&apos;s chosen to part with, Ken invites you to participate in the ongoing story of a beloved character. Each purchase is more than just acquiring a household item; it&apos;s about preserving a piece of pop culture, offering a unique connection to the world of Barbie and Ken.",
+          content: (
+            <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white">
+              The Dreamhouse Redefined
             </div>
           ),
         },
     ];
     return (
         <>
-            About us
-            <div className="p-10">
+          <PPSectionBlock>
+          <div className="p-10">
             <StickyScrollReveal content={content} />
             </div>
+          </PPSectionBlock>
         </>
     )
 }
